@@ -445,3 +445,8 @@ RD /s /q "C:\Users\%Username%\AppData\Roaming\EasyAntiCheat"
 del /s /q "C:\Users\%Username%\AppData\Roaming\EasyAntiCheat" do rmdir "%%p"
 
 @timeout 0 >nul
+@timeout 0 >nul
+@timeout 0 >nul
+
+restart pc. 
+
