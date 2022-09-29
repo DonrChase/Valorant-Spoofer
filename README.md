@@ -3,58 +3,51 @@
 ALL PROJECTS AND FILES ARE NOT MINE > THIS CREDIT: 10HEAD // LAST VERSION 
 ```
 
-### 💡 HOW TO USE ? 
+### 💭 〢 HOW TO USE
 
-・Scroll down the message And just follow the video below. 
-
-・If an error occurs, your motherboard is anti-numbering protection.
-
-✔️・If the free version doesn't work You can join our server to place an order.
+- Download Here [Release](https://github.com/Fnoberz/Valorant-Spoofer/releases/tag/Valorant) | Scroll down the text for instructions on how to use it.
+- 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
   
 *** 
   <p align="center">
     <a href="https://discord.com/users/943374631644045363">
-        <img title="Fnoberz discord" alt="Fnoberz's discord" src="https://discord.c99.nl/widget/theme-3/943374631644045363.png"/>
+        <img title="Fnoberz server discord" alt="Fnoberz's discord" src="https://discord.c99.nl/widget/theme-4/943374631644045363.png"/>
     </a>
 </p> 
 
-
  
-***
- 
-### 💬 DISCORD ・ [CLOUD | PROJECT](https://discord.gg/MBTkVcJefp) 
+#### 💬 DISCORD ・ [CLOUD | PROJECT](https://discord.gg/MBTkVcJefp) 
 
 
-* ` 🛒: Product :  Cheating Private | Spoofer | Source code | Driver `
-* ` 📌: Update Free | Undetected ` 
+*  🛒: `PRODUCT:  PRIVATE CHEATING | SPOOFER PRIVATE | SOURCE CODE| ETC.`
+*  📌: `UPDATE FREE LIFETIME | LEGIT | CHEATING IS LIFETIME ONLY `
 
-### 🤓 Services 
 
-* ` Product Warranty | If banned = Refund | Spoofer not working = Refund `
+### 🤑 Services 
+
+* ` PRODUCT WARANTY | IF BANNED = REFUND MONEY | SPOOFER NOT WORKING = REFUND MONEY `
 
 - Additional questions For the Product [Announcement](https://github.com/SarnaxLii/Announcement)
+- [Discord Server](https://discord.gg/MBTkVcJefp)
 
-#### 📝 WEBSITE [FNOBERZ.COM](http://fnoberz.com/)
+
+#### 📝 WEBSITE [FNOBERZ.COM](http://fnoberz.com/)  | Portfolio
 
  ```sh-session
-・ OUR CHEATING PRIVATE CAN PLAY MAIN ACCOUNT WITHOUT GETTING BANNED / JOIN DISCORD : Fnoberz#0001・ 
-```                
-***
+・ OUR CHEATING PRIVATE CAN PLAY MAIN ACCOUNT WITHOUT GETTING BANNED / JOIN DISCORD: Fnoberz#0001・ 
+```      
       
 
-<h2 align="center"> FOLLOW STEP IN VIDEO.. 
-
-
-#### ・1. REINSTALL WINDOWS AND CHANGE (FLASH BIOS , SERIAL NUMBER , VOLUME ID'S , MAC ADRESS , IP)
-
-#### ・2. INSTALL VALORANT
-
-#### ・3. REGISTER ACCOUNT AND PLAY GAME AGAIN ! 
 ***
+
+
+
+### 🤓 〢 Do this First
+
+- **Reinstall windows** > **Flash bios** `(How to do it? You can find it on Google because each motherboard is different.)`
 
 
 https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-98db-065c8dece03c.mp4
-
  
 
 <h2 align="center"> Copyright © 2021 - 2022 
