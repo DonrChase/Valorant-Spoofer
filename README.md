@@ -10,7 +10,7 @@ ALL PROJECTS AND FILES ARE NOT MINE > THIS CREDIT: 10HEAD // LAST VERSION
   
  ### 📂 〢 New Folder
  - **Valorant - Remove HWID** Run it after you have completed all the videos. 
- ```sh-session
+ ```python
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
   ```
   - Found a problem, not working or need help, please join the discord.
