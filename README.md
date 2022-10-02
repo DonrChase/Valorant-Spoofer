@@ -8,6 +8,14 @@ ALL PROJECTS AND FILES ARE NOT MINE > THIS CREDIT: 10HEAD // LAST VERSION
 - Download Here [Release](https://github.com/Fnoberz/Valorant-Spoofer/releases/tag/Valorant) | Scroll down the text for instructions on how to use it.
 - 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
   
+ ### 📂 〢 New Folder
+ - **Valorant - Remove HWID** Run it after you have completed all the videos. 
+ ```sh-session
+ CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
+  ```
+  - Found a problem, not working or need help, please join the discord.
+  
+
 *** 
   <p align="center">
     <a href="https://discord.com/users/943374631644045363">
