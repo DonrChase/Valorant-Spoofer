@@ -111,6 +111,18 @@ reg delete "HKEY_LOCAL_MACHINE\Software\Epic Games" /f
 reg delete "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control" /v SystemStartOptions /f
 reg delete "HKEY_USERS\S-1-5-21-2097722829-2509645790-3642206209-1001\Software\Epic Games" /f
 
+taskkill /f /im epicgameslauncher.exe > nul
+taskkill /f /im EpicWebHelper.exe > nul
+taskkill /f /im FortniteClient-Win64-Shipping_EAC.exe > nul
+taskkill /f /im FortniteClient-Win64-Shipping_BE.exe > nul
+taskkill /f /im FortniteLauncher.exe > nul
+taskkill /f /im FortniteClient-Win64-Shipping.exe > nul
+taskkill /f /im EpicGamesLauncher.exe > nul
+taskkill /f /im EasyAntiCheat.exe > nul
+taskkill /f /im BEService.exe > nul
+taskkill /f /im BEServices.exe > nul
+taskkill /f /im BattleEye.exe > nul
+
 reg delete "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\PackageRepository\Packages\Microsoft.XboxGameOverlay_1.41.24001.0_neutral_split.scale-100_8wekyb3d8bbwe" /f
 reg delete "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\PackageRepository\Packages\Microsoft.XboxGameOverlay_1.41.24001.0_neutral_~_8wekyb3d8bbwe" /f
 reg delete "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\PackageRepository\Packages\Microsoft.XboxGameOverlay_1.41.24001.0_x64__8wekyb3d8bbwe" /f
