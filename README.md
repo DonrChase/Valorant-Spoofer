@@ -24,9 +24,22 @@
 
 
 
-### 🤓 〢 Do this First
+### 🤓 〢 Error Alrgiht ❗
 
-- **Reinstall windows** > **Flash bios** `(How to do it? You can find it on Google because each motherboard is different.)`
+#### If you're using the Command step and you're having an error. You follow the steps below.
+- Reinstall Windows 
+- Flash Bios (You'll need to Google this step because every motherboard is different)
+- Using Valorant Spoofer Again
+- Reinstall Windows Again
+- Turn off the internet for 10 minutes and turn it on again. to reset the IP
+- Register Account Valorant + Download
+- Enjoy ! 
+
+If there is still an error problem That is, your motherboard doesn't support changing numbers. / Join [Discord Server](https://discord.gg/8NZuSfgygu)
+
+
+
+
 
 
 https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-98db-065c8dece03c.mp4
