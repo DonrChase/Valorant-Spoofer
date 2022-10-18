@@ -5,7 +5,7 @@
 ![asd](https://img.shields.io/badge/VALORANT_SPOOFER-372248?style=for-the-badge&logo=mysql&logoColor=white)
 
 
-### 💭 〢 HOW TO USE (Scroll down the text to read more)
+### 💭 〢 HOW TO USE 
 
 - Download Here [Release](https://github.com/Fnoberz/Valorant-Spoofer/releases/tag/Valorant) | Scroll down the text for instructions on how to use it.
 - 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
