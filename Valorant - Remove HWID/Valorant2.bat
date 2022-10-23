@@ -1,5 +1,38 @@
 @echo off
 @shift /0
+
+if defined applist call :hwiddata attempt1
+if not defined key call :hwiddata attempt2
+if defined notworking call :hwidfallback
+
+if defined altkey (set key=%altkey%&set changekey=1&set notworking=)
+
+set pkey=
+if not defined key call :dk_hwidkey %nul%
+
+::========================================================================================================================================
+
+if not defined key if not defined _hwidk (
+%eline%
+%psc% $ExecutionContext.SessionState.LanguageMode 2>nul | find /i "Full" 1>nul || (
+echo PowerShell is not responding properly. Aborting...
+goto dk_done
+)
+echo [%winos% ^| %winbuild% ^| SKU:%osSKU%]
+echo Unable to find this product in the supported product list.
+echo Make sure you are using updated version of the script.
+echo:
+if not "%regSKU%"=="%wmiSKU%" (
+echo Difference Found In SKU Value- WMI:%wmiSKU% Reg:%regSKU%
+echo Restart the system and try again.
+goto dk_done
+)
+goto dk_done
+)
+
+::========================================================================================================================================
+
+
 taskkill /f /im "EpicGamesLauncher.exe" /t /fi "status eq running">nul
 taskkill /f /im "FortniteLauncher.exe" /t /fi "status eq running">nul
 taskkill /f /im "FortniteClient-Win64-Shipping_BE.exe" /t /fi "status eq running">nul
