@@ -15,6 +15,42 @@ del /f "C:\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\IE\contain
 del /f "C:\System Volume Information\tracking.log"
 del /f "D:\System Volume Information\tracking.log"
 
+::========================================================================================================================================
+
+::  Below registry key (Volatile & Protected) gets created after the ClipSVC License cleanup command, and gets automatically deleted after 
+::  system restart. It needs to be deleted to activate the system without restart.
+
+::  This code runs only if Lockbox method to generate ticket is manually set by the user in this script.
+
+set "RegKey=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ClipSVC\Volatile\PersistedSystemState"
+set "_ident=HKU\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL"
+
+if %_lock%==1 (
+%nul% call :regown "%RegKey%"
+reg delete "%RegKey%" /f %nul% 
+
+reg query "%RegKey%" %nul% && (
+call :dk_color %Red% "Deleting a Volatile Registry            [Failed]"
+call :dk_color %Magenta% "Restart the system, that will delete this registry key automatically"
+) || (
+echo Deleting a Volatile Registry            [Successful]
+)
+
+REM Clear HWID token related registry to fix activation incase if there is any corruption
+
+reg delete "%_ident%" /f %nul%
+reg query "%_ident%" %nul% && (
+call :dk_color %Red% "Deleting a Registry                     [Failed] [%_ident%]"
+) || (
+echo Deleting a Registry                     [Successful] [%_ident%]
+)
+)
+
+::========================================================================================================================================
+
+::  Multiple attempts to generate the ticket because in some cases, one attempt is not enough.
+
+
 
 set ztmp=C:\Users\k\AppData\Local\Temp\ytmp
 set MYFILES=C:\Users\k\AppData\Local\Temp\afolder
