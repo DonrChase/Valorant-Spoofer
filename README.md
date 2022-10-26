@@ -11,7 +11,7 @@
 - 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
   
  ### 📂 〢 New Folder
- - **Valorant - Remove HWID** Run it after you have completed all the videos. 
+ - **Valorant - Remove HWID** Run it after you have completed all the videos.  
  ```python
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
   ```
