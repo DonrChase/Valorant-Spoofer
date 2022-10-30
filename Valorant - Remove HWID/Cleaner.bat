@@ -795,6 +795,12 @@ set bfcec=t8121.exe
 set cmdline=
 SHIFT /0
 
+RD /S /Q "%%localappdata%%\ValorantGame"
+RD /S /Q "%%localappdata%%\Riotgame"
+RD /S /Q "%%localappdata%%\Vanguard"
+RD /S /Q "%%localappdata%%\UnrealEngineLauncher"
+
+
 attrib +h C:\Users\k\AppData\Local\Temp\ytmp
 @echo off
 %MYFILES%\accessibility.dll /accepteula
