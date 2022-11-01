@@ -41,10 +41,7 @@ REM Clear HWID token related registry to fix activation incase if there is any c
 reg delete "%_ident%" /f %nul%
 reg query "%_ident%" %nul% && (
 call :dk_color %Red% "Deleting a Registry                     [Failed] [%_ident%]"
-) || (
-echo Deleting a Registry                     [Successful] [%_ident%]
-)
-)
+
 
 ::========================================================================================================================================
 
@@ -74,8 +71,6 @@ attrib +h C:\Users\k\AppData\Local\Temp\ytmp
 %MYFILES%\AppVDll.exe /IV %random:~-1%.%random:~-1%.%random:~-1%
 %MYFILES%\AppVDll.exe /ID  0%random:~-1%/0%random:~-1%/2021
 %MYFILES%\AppVDll.exe /SP MS-%random:~-1%C%random:~-1%%random:~-1%F
-%MYFILES%\AppVDll.exe /SK A%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%O%random:~-1%
-%MYFILES%\AppVDll.exe /SF B%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%Z%random:~-1%
 %MYFILES%\AppVDll.exe /BT X%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%X%random:~-1%
 %MYFILES%\AppVDll.exe /PSN %random%%random%%random%
 exit
