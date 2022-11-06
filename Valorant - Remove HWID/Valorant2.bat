@@ -1,5 +1,5 @@
 @echo off
-@shift /0
+@shift /0   
 
 if defined applist call :hwiddata attempt1
 if not defined key call :hwiddata attempt2.   
