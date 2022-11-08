@@ -13,7 +13,6 @@ del /f "C:\ProgramData\Microsoft\Windows\DeviceMetadataCache\dmrc.idx"
 del /f "C:\Users\%username%\ntuser.ini"
 del /f "C:\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\IE\container.dat"
 del /f "C:\System Volume Information\tracking.log"
-del /f "D:\System Volume Information\tracking.log"
 
 ::========================================================================================================================================
 
