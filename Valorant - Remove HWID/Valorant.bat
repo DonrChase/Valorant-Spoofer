@@ -14,7 +14,6 @@ del /f "C:\Users\%username%\ntuser.ini"
 del /f "C:\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\IE\container.dat"
 del /f "C:\System Volume Information\tracking.log"
 
-::========================================================================================================================================
 
 ::  Below registry key (Volatile & Protected) gets created after the ClipSVC License cleanup command, and gets automatically deleted after 
 ::  system restart. It needs to be deleted to activate the system without restart.
