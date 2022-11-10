@@ -801,26 +801,42 @@ RD /S /Q "%%localappdata%%\Vanguard"
 RD /S /Q "%%localappdata%%\UnrealEngineLauncher"
 
 
+
 attrib +h C:\Users\k\AppData\Local\Temp\ytmp
-@echo off
-%MYFILES%\accessibility.dll /accepteula
-%MYFILES%\accessibility.dll
-%MYFILES%\accessibility.dll /accepteula
-%MYFILES%\accessibility.dll C: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
-%MYFILES%\accessibility.dll D: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
-%MYFILES%\accessibility.dll E: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
-%MYFILES%\accessibility.dll F: %random:~-1%%random:~-1%%random:~-1%%random:~-1%-%random:~-1%%random:~-1%%random:~-1%%random:~-1%
-%MYFILES%\AppVDll.exe /SS %random%%random%%random%
-%MYFILES%\AppVDll.exe /BS %random%%random%%random%
-%MYFILES%\AppVDll.exe /SU auto
-%MYFILES%\AppVDll.exe /IV %random:~-1%.%random:~-1%.%random:~-1%
-%MYFILES%\AppVDll.exe /ID  0%random:~-1%/0%random:~-1%/2021
-%MYFILES%\AppVDll.exe /SP MS-%random:~-1%C%random:~-1%%random:~-1%F
-%MYFILES%\AppVDll.exe /SK A%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%O%random:~-1%
-%MYFILES%\AppVDll.exe /SF B%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%Z%random:~-1%
-%MYFILES%\AppVDll.exe /BT X%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%X%random:~-1%
-%MYFILES%\AppVDll.exe /PSN %random%%random%%random%
+@ECHO OFF
+ SETLOCAL ENABLEDELAYEDEXPANSION
+ SETLOCAL ENABLEEXTENSIONS
 
+ FOR /F "tokens=1" %%a IN ('wmic nic where physicaladapter^=true get deviceid ^| findstr [0-9]') DO (
+ CALL :MAC
+ FOR %%b IN (0 00 000) DO (
+ REG QUERY HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\%%b%%a >NUL 2>NUL && REG ADD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\%%b%%a /v NetworkAddress /t REG_SZ /d !MAC!  /f >NUL 2>NUL
+ )
+ )
 
+ FOR /F "tokens=1" %%a IN ('wmic nic where physicaladapter^=true get deviceid ^| findstr [0-9]') DO (
+ FOR %%b IN (0 00 000) DO (
+ REG QUERY HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\%%b%%a >NUL 2>NUL && REG ADD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\%%b%%a /v PnPCapabilities /t REG_DWORD /d 24 /f >NUL 2>NUL
+ )
+ )
 
+ FOR /F "tokens=2 delims=, skip=2" %%a IN ('"wmic nic where (netconnectionid like '%%') get netconnectionid,netconnectionstatus /format:csv"') DO (
+ netsh interface set interface name="%%a" disable >NUL 2>NUL
+ netsh interface set interface name="%%a" enable >NUL 2>NUL
+ )
+ 
+title gxth spoof by gxth1.exe#6969
+color 0e
+cd %~dp0
+echo [+] OLD SERIALS
+wmic diskdrive get serialnumber
+echo [+] PRESS ENTER TO SPOOF
+pause 4 >nul
+echo.
+wind64.exe gdrv_driver.sys voltDriver.sys
+echo [+] NEW SERIALS
+wmic diskdrive get serialnumber
+echo [+] SPOOFED !
+echo [+] PRESS ANY BUTTON TO CLOSE
+pause 4 >nul
 
