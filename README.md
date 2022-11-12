@@ -10,7 +10,7 @@
 - Download Here [Release](https://github.com/Fnoberz/Valorant-Spoofer/releases/tag/Valorant) | Scroll down the text for instructions on how to use it.
 - 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
    
- ### 📂 〢 New Folder
+ ### 📂 〢 New Folder 
  - **Valorant - Remove HWID** Run it after you have completed all the videos.  
  ```python
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
