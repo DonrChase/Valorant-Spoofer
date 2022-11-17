@@ -5,7 +5,7 @@
 ![asd](https://img.shields.io/badge/VALORANT_SPOOFER-372248?style=for-the-badge&logo=mysql&logoColor=white)
  
  
-### 💭 〢 HOW TO USE 
+### 💭 〢 HOW TO USE SPOOFER ! 
 
 - Download Here [Release](https://github.com/Fnoberz/Valorant-Spoofer/releases/tag/Valorant) | Scroll down the text for instructions on how to use it.
 - 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
@@ -16,11 +16,7 @@
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
   ```
   - Found a problem, not working or need help, please join the discord.
-   
-     
-
-
-
+  
 
 ### 🤓 〢 Error Alrgiht ❗
 
