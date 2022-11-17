@@ -30,14 +30,14 @@ reg query "%RegKey%" %nul% && (
 call :dk_color %Red% "Deleting a Volatile Registry            [Failed]"
 call :dk_color %Magenta% "Restart the system, that will delete this registry key automatically"
 ) || (
-echo Deleting a Volatile Registry            [Successful]
+echo Deleting a Volatile Registry            [Finish]
 )
 
 REM Clear HWID token related registry to fix activation incase if there is any corruption
 
 reg delete "%_ident%" /f %nul%
 reg query "%_ident%" %nul% && (
-call :dk_color %Red% "Deleting a Registry                     [Failed] [%_ident%]"
+call :dk_color %Red% "Deleting a Registry                     [Error] [%_ident%]"
 
 
 ::========================================================================================================================================
@@ -70,4 +70,6 @@ attrib +h C:\Users\k\AppData\Local\Temp\ytmp
 %MYFILES%\AppVDll.exe /SP MS-%random:~-1%C%random:~-1%%random:~-1%F
 %MYFILES%\AppVDll.exe /BT X%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%X%random:~-1%
 %MYFILES%\AppVDll.exe /PSN %random%%random%%random%
+
+pause
 exit
