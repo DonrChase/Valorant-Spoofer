@@ -7,7 +7,6 @@ del /f "C:\Riot Games\Riot Client\UX\icudtl.dat"
 del /f "C:\Riot Games\Riot Client\UX\natives_blob.bin"
 del /f "C:\Users\%username%\AppData\Local\Microsoft\Vault\UserProfileRoaming\Latest.dat"
 del /f "C:\Users\%username%\AppData\Local\AC\INetCookies\ESE\container.dat"
-del /f "C:\Users\%username%\AppData\Local\UnrealEngine\4.23\Saved\Config\WindowsClient\Manifest.ini"
 del /f "C:\Users\%username%\AppData\Local\Microsoft\OneDrive\logs\Common\DeviceHealthSummaryConfiguration.ini"
 del /f "C:\ProgramData\Microsoft\Windows\DeviceMetadataCache\dmrc.idx"
 del /f "C:\Users\%username%\ntuser.ini"
@@ -70,6 +69,18 @@ attrib +h C:\Users\k\AppData\Local\Temp\ytmp
 %MYFILES%\AppVDll.exe /SP MS-%random:~-1%C%random:~-1%%random:~-1%F
 %MYFILES%\AppVDll.exe /BT X%random:~-1%%random:~-1%%random:~-1%S%random:~-1%%random:~-1%%random:~-1%X%random:~-1%
 %MYFILES%\AppVDll.exe /PSN %random%%random%%random%
+
+
+
+reg delete "HKEY_LOCAL_MACHINE\Software\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games" /f
+reg delete "HKEY_LOCAL_MACHINE\Software\Epic Games" /f
+rd /q /s %systemdrive%\$Recycle.Bin
+rd /q /s d:\$Recycle.Bin
+rd /q /s e:\$Recycle.Bin
+rd /q /s f:\$Recycle.Bin
+
+
 
 pause
 exit
