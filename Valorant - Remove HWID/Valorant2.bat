@@ -7,7 +7,7 @@ if defined notworking call :hwidfallback
 
 if defined altkey (set key=%altkey%&set changekey=1&set notworking=)
 
-set pkey=
+
 if not defined key call :dk_hwidkey %nul%.   
 
 ::========================================================================================================================================
