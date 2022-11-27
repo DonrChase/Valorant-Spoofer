@@ -15,7 +15,7 @@
  ```python
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
   ```
-  - Found a problem, not working or need help, please join the discord.
+  - Found a problem, not working or need help, please join the discord. 
   
  
 ### 🤓 〢 Error Alrgiht ❗
