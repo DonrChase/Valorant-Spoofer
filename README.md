@@ -14,7 +14,7 @@
  - **Valorant - Remove HWID** Run it after you have completed all the videos.  
  ```python
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
-  ```
+  ``` 
   - Found a problem, not working or need help, please join the discord. 
   
  
