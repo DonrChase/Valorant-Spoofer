@@ -114,9 +114,6 @@ taskkill /f /im FortniteLauncher.exe > nul
 taskkill /f /im FortniteClient-Win64-Shipping.exe > nul
 taskkill /f /im EpicGamesLauncher.exe > nul
 taskkill /f /im EasyAntiCheat.exe > nul
-taskkill /f /im BEService.exe > nul
-taskkill /f /im BEServices.exe > nul
-taskkill /f /im BattleEye.exe > nul
 
 reg delete "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\PackageRepository\Packages\Microsoft.XboxGameOverlay_1.41.24001.0_neutral_split.scale-100_8wekyb3d8bbwe" /f
 reg delete "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\PackageRepository\Packages\Microsoft.XboxGameOverlay_1.41.24001.0_neutral_~_8wekyb3d8bbwe" /f
@@ -804,9 +801,6 @@ del "C:\Users\%username%\AppData\Local\Temp\ecache.bin",
 del "C:\Users\%username%\AppData\Local\CrashDumps\BACKGR~2.DMP",
 del "C:\Windows\prefetch\ATTRIB.EXE-58A07CAF.pf",
 del "C:\Windows\prefetch\AgRobust.db",
-del "C:\Users\%username%\AppData\Local\Microsoft\Feeds Cache",
-del "C:\Windows\prefetch\CEPHTMLENGINE.EXE-E15640BA.pf",
-del "C:\Windows\prefetch\CMD.EXE-0BD30981.pf",
 del "C:\Windows\prefetch\CLIPUP.EXE-4C5C7B66.pf",
 del "C:\Windows\prefetch\D3D9TEST.EXE-1B86F3FC.pf",
 del "C:\Windows\prefetch\DISCORD.EXE-6BEBC47C.pf",
