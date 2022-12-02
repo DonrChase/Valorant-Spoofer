@@ -5,10 +5,6 @@ if defined applist call :hwiddata attempt1
 if not defined key call :hwiddata attempt2.   
 if defined notworking call :hwidfallback
 
-if defined altkey (set key=%altkey%&set changekey=1&set notworking=)
-
-
-if not defined key call :dk_hwidkey %nul%.   
 
 ::========================================================================================================================================
 
