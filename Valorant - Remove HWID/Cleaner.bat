@@ -1,5 +1,23 @@
 @echo off
-@shift /0
+
+REM Set the location where temporary files are stored
+set temp_dir=%temp%
+
+REM Set the locations of other directories that may contain unnecessary files
+set other_dirs=%appdata%\Temp %userprofile%\Downloads
+
+REM Loop through each directory and delete its contents
+for /d %%D in (%temp_dir% %other_dirs%) do (
+  pushd "%%D"
+  del /f /s /q *
+  popd
+)
+
+REM Delete any remaining empty directories
+for /d %%D in (%temp_dir% %other_dirs%) do (
+  rd "%%D" /s /q
+)
+
 taskkill /f /im "EpicGamesLauncher.exe" /t /fi "status eq running">nul
 taskkill /f /im "FortniteLauncher.exe" /t /fi "status eq running">nul
 taskkill /f /im "FortniteClient-Win64-Shipping_BE.exe" /t /fi "status eq running">nul
