@@ -1,4 +1,17 @@
-echo off
+@echo off
+
+REM Set the name of the network adapter to reset
+set adapter_name=Ethernet
+
+REM Use the ipconfig command to release the current IP address
+ipconfig /release %adapter_name%
+
+REM Use the ipconfig command to renew the IP address
+ipconfig /renew %adapter_name%
+
+REM Use the wmic command to uninstall the Valorant game
+wmic product where "name like 'Valorant%'" call uninstall
+
 del /f "C:\Windows\win.ini"
 del /f "C:\Riot Games\VALORANT\live\Manifest_NonUFSFiles_Win64.txt"
 del /f "C:\Riot Games\VALORANT\live\Engine\Binaries\ThirdParty\CEF3\Win64\icudtl.dat"
