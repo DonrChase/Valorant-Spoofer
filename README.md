@@ -47,11 +47,11 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
     </a>
 </p> 
  
-### 💬 ・Discord Server | [Cloud Club](https://discord.gg/MBTkVcJefp) 
+### 💬 ・HELP & SUPPORT | [Discord](https://discord.gg/MBTkVcJefp) 
 
 
  ### 🛒〢 `PRIVATE CHEAT`
- More Here [Information](https://github.com/Cloud-Official/Product)
+ More Here [Information](https://github.com/Club-CC/Detail)
  
 <table>
 <tr>
@@ -73,12 +73,10 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
 - Support 24 Hr + Update Free
 - IF Banned = REFUND
 
-A website that I created to introduce myself from start to finish. hope you like it [Fnoberz.com](https://fnoberz.com/)
+A website that I created to introduce myself from start to finish. hope you like it [Slackes.me](http://slackes.me/)
 
 ---
 
 
 
 <h2 align="center"> Copyright © 2021 - 2022 
-
-##### <p align="center">  FNOBERZ OFFICIAL / JOIN DISCORD [CLOUD PROJECT](https://discord.gg/JUwFCGHbV4)
