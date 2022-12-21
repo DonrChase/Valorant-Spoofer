@@ -811,3 +811,4 @@ AMIDEWIN.EXE /dms serials.txt
 type serials.txt
 del /f serials.txt
 exit
+  
