@@ -17,7 +17,7 @@
   ```  
   - Found a problem, not working or need help, please join the discord. 
   
-  
+   
 ### 🤓 〢 Error Alrgiht ❗
 
 #### If you're using the Command step and you're having an error. You follow the steps below.
