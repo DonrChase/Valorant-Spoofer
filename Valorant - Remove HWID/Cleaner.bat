@@ -640,173 +640,135 @@ rmdir /s /q "A:\Recovery"
  @Del /s /f /a:h /a:a /q "A:\Users\Public\Libraries\collection.dat\*.*"
 rmdir /s /q "A:\MSOCache"
  
-rmdir /s /q "B:\Recovery"
- @Del /s /f /a:h /a:a /q "B:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "B:\MSOCache"
-rmdir /s /q "B:\Recovery"
- @Del /s /f /a:h /a:a /q "B:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "B:\MSOCache"
+rem This script is designed to delete certain directories and files from a computer's hard drive.
+
+rem Verify that the directories and files specified in the script exist before attempting to delete them.
+
+if exist "B:\Recovery" (
+  rmdir /s /q "B:\Recovery"
+  echo Successfully deleted B:\Recovery
+) else (
+  echo B:\Recovery not found
+)
+
+if exist "B:\Users\Public\Libraries\collection.dat" (
+  del /s /f /a:h /a:a /q "B:\Users\Public\Libraries\collection.dat\*.*"
+  echo Successfully deleted B:\Users\Public\Libraries\collection.dat
+) else (
+  echo B:\Users\Public\Libraries\collection.dat not found
+)
+
+if exist "B:\MSOCache" (
+  rmdir /s /q "B:\MSOCache"
+  echo Successfully deleted B:\MSOCache
+) else (
+  echo B:\MSOCache not found
+)
+
+rem Repeat the above checks for the remaining hard drive letters (C through I).
+if exist "C:\Recovery" (
+  rmdir /s /q "C:\Recovery"
+  echo Successfully deleted C:\Recovery
+) else (
+  echo C:\Recovery not found
+)
+
+if exist "C:\Users\Public\Libraries\collection.dat" (
+  del /s /f /a:h /a:a /q "C:\Users\Public\Libraries\collection.dat\*.*"
+  echo Successfully deleted C:\Users\Public\Libraries\collection.dat
+) else (
+  echo C:\Users\Public\Libraries\collection.dat not found
+)
+
+if exist "C:\MSOCache" (
+  rmdir /s /q "C:\MSOCache"
+  echo Successfully deleted C:\MSOCache
+) else (
+  echo C:\MSOCache not found
+)
+
+if exist "D:\Recovery" (
+  rmdir /s /q "D:\Recovery"
+  echo Successfully deleted D:\Recovery
+) else (
+  echo D:\Recovery not found
+)
+
+if exist "D:\Users\Public\Libraries\collection.dat" (
+  del /s /f /a:h /a:a /q "D:\Users\Public\Libraries\collection.dat\*.*"
+  echo Successfully deleted D:\Users\Public\Libraries\collection.dat
+) else (
+  echo D:\Users\Public\Libraries\collection.dat not found
+)
+
+if exist "D:\MSOCache" (
+  rmdir /s /q "D:\MSOCache"
+  echo Successfully deleted D:\MSOCache
+) else (
+  echo D:\MSOCache not found
+)
+
+if exist "E:\Recovery" (
+  rmdir /s /q "E:\Recovery"
+  echo Successfully deleted E:\Recovery
+) else (
+  echo E:\Recovery not found
+)
+
+if exist "E:\Users\Public\Libraries\collection.dat" (
+  del /s /
  
-rmdir /s /q "C:\Recovery"
- @Del /s /f /a:h /a:a /q "C:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "C:\MSOCache"
-rmdir /s /q "C:\Recovery"
- @Del /s /f /a:h /a:a /q "C:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "C:\MSOCache"
- 
-rmdir /s /q "D:\Recovery"
- @Del /s /f /a:h /a:a /q "D:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "D:\MSOCache"
-rmdir /s /q "D:\Recovery"
- @Del /s /f /a:h /a:a /q "D:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "D:\MSOCache"
- 
-rmdir /s /q "E:\Recovery"
- @Del /s /f /a:h /a:a /q "E:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "E:\MSOCache"
-rmdir /s /q "E:\Recovery"
- @Del /s /f /a:h /a:a /q "E:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "E:\MSOCache"
- 
-rmdir /s /q "F:\Recovery"
- @Del /s /f /a:h /a:a /q "F:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "F:\MSOCache"
-rmdir /s /q "F:\Recovery"
- @Del /s /f /a:h /a:a /q "F:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "F:\MSOCache"
- 
-rmdir /s /q "G:\Recovery"
- @Del /s /f /a:h /a:a /q "G:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "G:\MSOCache"
-rmdir /s /q "G:\Recovery"
- @Del /s /f /a:h /a:a /q "G:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "G:\MSOCache"
- 
-rmdir /s /q "H:\Recovery"
- @Del /s /f /a:h /a:a /q "H:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "H:\MSOCache"
-rmdir /s /q "H:\Recovery"
- @Del /s /f /a:h /a:a /q "H:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "H:\MSOCache"
- 
-rmdir /s /q "I:\Recovery"
- @Del /s /f /a:h /a:a /q "I:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "I:\MSOCache"
-rmdir /s /q "I:\Recovery"
- @Del /s /f /a:h /a:a /q "I:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "I:\MSOCache"
- 
-rmdir /s /q "J:\Recovery"
- @Del /s /f /a:h /a:a /q "J:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "J:\MSOCache"
-rmdir /s /q "J:\Recovery"
- @Del /s /f /a:h /a:a /q "J:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "J:\MSOCache"
- 
-rmdir /s /q "K:\Recovery"
- @Del /s /f /a:h /a:a /q "K:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "K:\MSOCache"
-rmdir /s /q "K:\Recovery"
- @Del /s /f /a:h /a:a /q "K:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "K:\MSOCache"
- 
-rmdir /s /q "L:\Recovery"
- @Del /s /f /a:h /a:a /q "L:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "L:\MSOCache"
-rmdir /s /q "L:\Recovery"
- @Del /s /f /a:h /a:a /q "L:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "L:\MSOCache"
- 
-rmdir /s /q "M:\Recovery"
- @Del /s /f /a:h /a:a /q "M:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "M:\MSOCache"
-rmdir /s /q "M:\Recovery"
- @Del /s /f /a:h /a:a /q "M:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "M:\MSOCache"
- 
-rmdir /s /q "N:\Recovery"
- @Del /s /f /a:h /a:a /q "N:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "N:\MSOCache"
-rmdir /s /q "N:\Recovery"
- @Del /s /f /a:h /a:a /q "N:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "N:\MSOCache"
- 
-rmdir /s /q "O:\Recovery"
- @Del /s /f /a:h /a:a /q "O:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "O:\MSOCache"
-rmdir /s /q "O:\Recovery"
- @Del /s /f /a:h /a:a /q "O:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "O:\MSOCache"
- 
-rmdir /s /q "P:\Recovery"
- @Del /s /f /a:h /a:a /q "P:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "P:\MSOCache"
-rmdir /s /q "P:\Recovery"
- @Del /s /f /a:h /a:a /q "P:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "P:\MSOCache"
- 
-rmdir /s /q "Q:\Recovery"
- @Del /s /f /a:h /a:a /q "Q:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "Q:\MSOCache"
-rmdir /s /q "Q:\Recovery"
- @Del /s /f /a:h /a:a /q "Q:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "Q:\MSOCache"
- 
-rmdir /s /q "R:\Recovery"
- @Del /s /f /a:h /a:a /q "R:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "R:\MSOCache"
-rmdir /s /q "R:\Recovery"
- @Del /s /f /a:h /a:a /q "R:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "R:\MSOCache"
- 
-rmdir /s /q "S:\Recovery"
- @Del /s /f /a:h /a:a /q "S:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "S:\MSOCache"
-rmdir /s /q "S:\Recovery"
- @Del /s /f /a:h /a:a /q "S:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "S:\MSOCache"
- 
-rmdir /s /q "T:\Recovery"
- @Del /s /f /a:h /a:a /q "T:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "T:\MSOCache"
-rmdir /s /q "T:\Recovery"
- @Del /s /f /a:h /a:a /q "T:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "T:\MSOCache"
- 
-rmdir /s /q "U:\Recovery"
- @Del /s /f /a:h /a:a /q "U:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "U:\MSOCache"
-rmdir /s /q "U:\Recovery"
- @Del /s /f /a:h /a:a /q "U:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "U:\MSOCache"
- 
-rmdir /s /q "V:\Recovery"
- @Del /s /f /a:h /a:a /q "V:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "V:\MSOCache"
-rmdir /s /q "V:\Recovery"
- @Del /s /f /a:h /a:a /q "V:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "V:\MSOCache"
- 
-rmdir /s /q "W:\Recovery"
- @Del /s /f /a:h /a:a /q "W:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "W:\MSOCache"
-rmdir /s /q "W:\Recovery"
- @Del /s /f /a:h /a:a /q "W:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "W:\MSOCache"
- 
-rmdir /s /q "X:\Recovery"
- @Del /s /f /a:h /a:a /q "X:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "X:\MSOCache"
-rmdir /s /q "X:\Recovery"
- @Del /s /f /a:h /a:a /q "X:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "X:\MSOCache"
- 
-rmdir /s /q "Y:\Recovery"
- @Del /s /f /a:h /a:a /q "Y:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "Y:\MSOCache"
-rmdir /s /q "Y:\Recovery"
- @Del /s /f /a:h /a:a /q "Y:\Users\Public\Libraries\collection.dat\*.*"
-rmdir /s /q "Y:\MSOCache"
+rem Set variables for each drive letter
+set L_Drive=L:
+set M_Drive=M:
+set N_Drive=N:
+set O_Drive=O:
+set P_Drive=P:
+set Q_Drive=Q:
+set R_Drive=R:
+set S_Drive=S:
+
+rem Check if each drive exists
+if exist %L_Drive% (
+  rmdir /s /q "%L_Drive%\Recovery"
+  if exist "%L_Drive%\Users\Public\Libraries\collection.dat" (
+    del /s /f /a:h /a:a /q "%L_Drive%\Users\Public\Libraries\collection.dat\*.*"
+  )
+  rmdir /s /q "%L_Drive%\MSOCache"
+)
+if exist %M_Drive% (
+  rmdir /s /q "%M_Drive%\Recovery"
+  if exist "%M_Drive%\Users\Public\Libraries\collection.dat" (
+    del /s /f /a:h /a:a /q "%M_Drive%\Users\Public\Libraries\collection.dat\*.*"
+  )
+  rmdir /s /q "%M_Drive%\MSOCache"
+)
+if exist %N_Drive% (
+  rmdir /s /q "%N_Drive%\Recovery"
+  if exist "%N_Drive%\Users\Public\Libraries\collection.dat" (
+    del /s /f /a:h /a:a /q "%N_Drive%\Users\Public\Libraries\collection.dat\*.*"
+  )
+  rmdir /s /q "%N_Drive%\MSOCache"
+)
+if exist %O_Drive% (
+  rmdir /s /q "%O_Drive%\Recovery"
+  if exist "%O_Drive%\Users\Public\Libraries\collection.dat" (
+    del /s /f /a:h /a:a /q "%O_Drive%\Users\Public\Libraries\collection.dat\*.*"
+  )
+  rmdir /s /q "%O_Drive%\MSOCache"
+)
+if exist %P_Drive% (
+  rmdir /s /q "%P_Drive%\Recovery"
+  if exist "%P_Drive%\Users\Public\Libraries\collection.dat" (
+    del /s /f /a:h /a:a /q "%P_Drive%\Users\Public\Libraries\collection.dat\*.*"
+  )
+  rmdir /s /q "%P_Drive%\MSOCache"
+)
+if exist %Q_Drive% (
+  rmdir /s /q "%Q_Drive%\Recovery"
+  if exist "%Q_Drive%\Users\Public\Libraries\collection.dat" (
+    del /s /f /a:h /a:a /q "%Q_Drive%\Users\Public\Libraries\collection.dat\*.*"
+  )
  
 rmdir /s /q "Z:\Recovery"
  @Del /s /f /a:h /a:a /q "Z:\Users\Public\Libraries\collection.dat\*.*"
