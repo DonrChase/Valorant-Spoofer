@@ -4,23 +4,32 @@
 ![Windows](https://img.shields.io/badge/-Winodows-28C2FF?style=for-the-badge&logo=windows&logoColor=blue)
 ![asd](https://img.shields.io/badge/VALORANT_SPOOFER-372248?style=for-the-badge&logo=mysql&logoColor=white)
     
-  
-### 💭 〢 HOW TO USE       
+---
+
+
+
+### 💭 〢 USE       
  
-- Download Here [Release](https://github.com/Fnoberz/Valorant-Spoofer/releases/tag/Valorant) | Scroll down the text for instructions on how to use it.
-- 🔎 If the free version doesn't work, join the discord to find out more. [Discord server](https://discord.gg/MBTkVcJefp)
-   
- ### 📂 〢 New Folder 
- - **Valorant - Remove HWID** Run it after you have completed all the videos.  
+- Download Here [Download](https://github.com/Slackes/Valorant-Spoofer/releases/tag/Valorant)
+- Follow the video first
+- When finished following the video & proceed to the second step.
+
+#### ❌ Do not skip steps
+
+### STEP 2 
+- **Valorant - Remove HWID** Run it after you have completed all the videos.  
  ```python 
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
   ```  
-  - Found a problem, not working or need help, please join the discord. 
   
-   
-### 🤓 〢 Error Alrgiht ❗
+---
+
+
+  
+### ERROR
 
 #### If you're using the Command step and you're having an error. You follow the steps below.
+
 - Reinstall Windows 
 - Flash Bios (You'll need to Google this step because every motherboard is different)
 - Using Valorant Spoofer Again
@@ -39,19 +48,17 @@ If there is still an error problem That is, your motherboard doesn't support cha
 https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-98db-065c8dece03c.mp4
  
  
----
+--- 
 
   <p align="center">
-    <a href="https://discord.com/users/943374631644045363">
-        <img title="Fnoberz server discord" alt="Fnoberz's discord" src="https://discord.c99.nl/widget/theme-4/943374631644045363.png"/>
+    <a href="https://discord.gg/MBTkVcJefp">
+        <img title="Slackes server discord" alt="Slackes discord" src="https://discordapp.com/api/guilds/880135738077896764/widget.png?style=banner2"/>
     </a>
 </p> 
  
-### 💬 ・HELP & SUPPORT | [Discord](https://discord.gg/MBTkVcJefp) 
+## 💬 ・[Discord](https://discord.gg/MBTkVcJefp) 
 
-
- ### 🛒〢 `PRIVATE CHEAT`
- More Here [Information](https://github.com/Club-CC/Detail)
+ ### 🛒〢 `PRODUCT`
  
 <table>
 <tr>
@@ -61,17 +68,18 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
 </table>
 
   
-### 🎯 〢 Product Cheat
+### 🥊 〢 Private Cheat
 
-- Lifetime + Update Free
+- Lifetime 
+- Free Updates 
+- Undetected
 - Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers)`
-- Undetected and can be played on the main account.
 
+### ⚓〢 Warranty
 
-### 💯〢 Warranty Product.
-
-- Support 24 Hr + Update Free
-- IF Banned = REFUND
+- Support 24 Hr
+- Update Free
+- If banned = `REFUND`
 
 A website that I created to introduce myself from start to finish. hope you like it [Slackes.me](http://slackes.me/)
 
