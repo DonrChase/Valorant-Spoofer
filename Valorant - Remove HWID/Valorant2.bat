@@ -8,23 +8,37 @@ if defined notworking call :hwidfallback
 
 ::========================================================================================================================================
 
-if not defined key if not defined _hwidk (
-%eline%
-%psc% $ExecutionContext.SessionState.LanguageMode 2>nul | find /i "Full" 1>nul || (
-echo PowerShell is not responding properly. Aborting...
-goto dk_done
-)
-echo [%winos% ^| %winbuild% ^| SKU:%osSKU%]
-echo Unable to find this product in the supported product list.
-echo Make sure you are using updated version of the script.
-echo:
-if not "%regSKU%"=="%wmiSKU%" (
-echo Difference Found In SKU Value- WMI:%wmiSKU% Reg:%regSKU%
-echo Restart the system and try again.
-goto dk_done
-)
-goto dk_done
-)
+# Check if PowerShell is in Full Language Mode
+$langMode = $ExecutionContext.SessionState.LanguageMode
+if ($langMode -ne 'Full') {
+    Write-Output "PowerShell is not in Full Language Mode. Current mode: $langMode"
+    Write-Output "This script requires Full Language Mode to run properly. Aborting..."
+    exit
+}
+
+# Display OS information
+$osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
+$winos = $osInfo.Caption
+$winbuild = $osInfo.BuildNumber
+$osSKU = $osInfo.OperatingSystemSKU
+Write-Output "[$winos | Build $winbuild | SKU:$osSKU]"
+
+# Check for product in supported list
+$supportedProducts = @('Product1', 'Product2', 'Product3')
+$productKey = Get-ProductKey -ProductName $productName
+if ($productKey -eq $null) {
+    Write-Output "Unable to find product '$productName' in the supported product list."
+    Write-Output "Make sure you are using an updated version of the script."
+}
+
+# Compare SKU values from WMI and registry
+$wmiSKU = (Get-WmiObject -Class Win32_OperatingSystem).OperatingSystemSKU
+$regSKU = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').ProductName
+if ($regSKU -ne $wmiSKU) {
+    Write-Output "Difference found in SKU value - WMI:$wmiSKU | Reg:$regSKU"
+    Write-Output "Restart the system and try again."
+}
+
 
 ::========================================================================================================================================
 
