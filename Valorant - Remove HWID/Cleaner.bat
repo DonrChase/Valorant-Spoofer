@@ -728,6 +728,8 @@ set Q_Drive=Q:
 set R_Drive=R:
 set S_Drive=S:
 
+rem Other commands go here
+
 rem Check if each drive exists
 if exist %L_Drive% (
   rmdir /s /q "%L_Drive%\Recovery"
