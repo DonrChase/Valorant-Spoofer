@@ -13,7 +13,7 @@
 - Download Here [Download](https://github.com/Slackes/Valorant-Spoofer/releases/tag/Valorant)
 - Follow the video first
 - When finished following the video & proceed to the second step.
-
+ 
 #### ❌ Do not skip steps
 
 ### STEP 2 
