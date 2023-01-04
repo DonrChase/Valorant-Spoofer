@@ -1,22 +1,35 @@
-### VALORANT SPOOFER
-![VS](https://img.shields.io/badge/Visual_Studio_Codde-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
-![File](https://img.shields.io/badge/BATCH_FILES-EFA00B?style=for-the-badge&logo=IntelliJ+IDEA&logoColor=black)
-![Windows](https://img.shields.io/badge/-Winodows-28C2FF?style=for-the-badge&logo=windows&logoColor=blue)
-![asd](https://img.shields.io/badge/VALORANT_SPOOFER-372248?style=for-the-badge&logo=mysql&logoColor=white)
+<h1 align="center">
+  Valorant Spoofer ➰
+</h1>
+
+<p align="center">
+  Spoofer VAL-152 / 51
+</p>
+
+
+
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/Slackes/Valorant-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/last-commit/Slackes/Valorant-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/stars/Slackes/Valorant-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
+
+</p>
+
     
 ---
 
 
 
-### 💭 〢 USE       
+## 💭 〢 Read      
  
-- Download Here [Download](https://github.com/Slackes/Valorant-Spoofer/releases/tag/Valorant)
+- You can download all the files here. [Download](https://github.com/Slackes/Valorant-Spoofer/releases/tag/Valorant)
 - Follow the video first
-- When finished following the video & proceed to the second step.
  
-#### ❌ Do not skip steps
 
-### STEP 2 
+
+## 🥱 〢 Use
+
+- Ordered from left to right to prevent confusion / use at your own risk.
 - **Valorant - Remove HWID** Run it after you have completed all the videos.  
  ```python 
  CLEARNER.BAT >> VALORANT.BAT >> VALORANT.2 >> RESTART PC / ENJOY
@@ -26,7 +39,7 @@
 
 
   
-### ERROR
+### 〢 If Show Error
 
 #### If you're using the Command step and you're having an error. You follow the steps below.
 
@@ -38,11 +51,11 @@
 - Register Account Valorant + Download
 - Enjoy ! 
 
-If there is still an error problem That is, your motherboard doesn't support changing numbers. / Join [Discord Server](https://discord.gg/8NZuSfgygu)
+## <a id="setup2"></a> 📞 〢 Support
+- If you have any questions or don't understand the instructions, join Discord for help.
+- [Discord](https://discord.gg/MBTkVcJefp)
 
- 
-
-
+---
 
 
 https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-98db-065c8dece03c.mp4
@@ -85,6 +98,9 @@ A website that I created to introduce myself from start to finish. hope you like
 
 ---
 
+  <br>
 
+<p align="center">
+  Copyright © 2021 - 2022
+<br>
 
-<h2 align="center"> Copyright © 2021 - 2022 
