@@ -1108,45 +1108,40 @@ REG DELETE "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedP
 REG DELETE "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher\CTLs" /f  
 REG DELETE "HKEY_CURRENT_USER\Software\Classes\Installer\Dependencies" /v MSICache /f
  
-: Disable Static IP/Enable DHCP    Remove DNS     Enable NICs
-for /f "skip=2 tokens=3*" %%i in ('netsh interface show interface') do (
-netsh int ip set address "%%j" dhcp 
-netsh int ip set dns "%%j" dhcp 
-netsh interface set interface name="%%j" admin=enabled )
-@ ECHO.
-@ ECHO.
-@ ECHO.
-echo Flush DNS: 
- @echo off
-ipconfig /flushdns 
-@ ECHO.
-@ ECHO.
-@ ECHO.
-echo Clear ARP/Route table:
- @echo off
+rem Loop through all network interfaces on the machine using the `netsh interface show interface` command
+for /f "skip=2 tokens=3*" %%i in ('netsh interface show interface ^| findstr /r /c:"[^ ]* [^ ]*"') do (
+    rem Store the current interface name in a variable
+    set "interface_name=%%j"
+    echo Configuring interface: %interface_name%
+    rem Disable the current interface before making changes
+    netsh interface set interface name="%interface_name%" admin=disabled
+    rem Set IP address to DHCP
+    netsh int ip set address "%interface_name%" dhcp
+    rem Set DNS server to DHCP
+    netsh int ip set dns "%interface_name%" dhcp
+    rem Enable the interface
+    netsh interface set interface name="%interface_name%" admin=enabled
+    echo %interface_name% Configured Successfully
+)
+
+echo Flushing DNS...
+ipconfig /flushdns
+
+echo Clearing ARP cache and route table...
 netsh interface ip delete arpcache
-@ ECHO.
-@ ECHO.
-@ ECHO.
-echo Clear SSL state:
-certutil -URLCache * delete 
-@ ECHO.
-@ ECHO.
-@ ECHO.
-echo Reset TCP/IP:
- @echo off
-netsh int ip reset 
-netsh int ipv4 reset 
-netsh int ipv6 reset 
- 
-@ ECHO.
-@ ECHO.
-echo Clear Winsock:
- @echo off
-netsh winsock reset 
-@ ECHO.
- 
-echo Reset Firewall Settings
- @echo off 
-netsh advfirewall reset 
+
+echo Clearing SSL state...
+certutil -URLCache * delete
+
+echo Resetting TCP/IP and IPv4/IPv6 settings...
+netsh int ip reset
+netsh int ipv4 reset
+netsh int ipv6 reset
+
+echo Clearing Winsock catalog...
+netsh winsock reset
+
+echo Resetting firewall settings...
+netsh advfirewall reset
+
 exit
