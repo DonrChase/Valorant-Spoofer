@@ -845,25 +845,7 @@ rd /q /s D:\$Recycle.Bin
 rd /q /s E:\$Recycle.Bin
 rd /q /s F:\$Recycle.Bin
 rd /q /s G:\$Recycle.Bin
-rd /q /s H:\$Recycle.Bin
-rd /q /s I:\$Recycle.Bin
-rd /q /s J:\$Recycle.Bin
-rd /q /s K:\$Recycle.Bin
-rd /q /s L:\$Recycle.Bin
-rd /q /s M:\$Recycle.Bin
-rd /q /s N:\$Recycle.Bin
-rd /q /s O:\$Recycle.Bin
-rd /q /s P:\$Recycle.Bin
-rd /q /s Q:\$Recycle.Bin
-rd /q /s R:\$Recycle.Bin
-rd /q /s S:\$Recycle.Bin
-rd /q /s T:\$Recycle.Bin
-rd /q /s U:\$Recycle.Bin
-rd /q /s V:\$Recycle.Bin
-rd /q /s W:\$Recycle.Bin
-rd /q /s X:\$Recycle.Bin
-rd /q /s Y:\$Recycle.Bin
-rd /q /s Z:\$Recycle.Bin
+
  
 REG DELETE "HKCU\Software\Electronic Arts\EA Core\Staging\194908\ergc" /f
 REG DELETE "HKCU\Software\Electronic Arts" /f
