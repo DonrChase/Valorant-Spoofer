@@ -1106,24 +1106,69 @@ for /f "skip=2 tokens=3*" %%i in ('netsh interface show interface ^| findstr /r 
     echo %interface_name% Configured Successfully
 )
 
-echo Flushing DNS...
+rem Flush DNS cache
 ipconfig /flushdns
+if %errorlevel% neq 0 (
+    echo Failed to flush DNS cache.
+    goto :end
+)
+echo Successfully flushed DNS cache.
 
-echo Clearing ARP cache and route table...
+rem Clear ARP cache and route table
 netsh interface ip delete arpcache
+if %errorlevel% neq 0 (
+    echo Failed to clear ARP cache and route table.
+    goto :end
+)
+echo Successfully cleared ARP cache and route table.
 
-echo Clearing SSL state...
+rem Clear SSL state
 certutil -URLCache * delete
+if %errorlevel% neq 0 (
+    echo Failed to clear SSL state.
+    goto :end
+)
+echo Successfully cleared SSL state.
 
-echo Resetting TCP/IP and IPv4/IPv6 settings...
+rem Reset TCP/IP and IPv4/IPv6 settings
 netsh int ip reset
+if %errorlevel% neq 0 (
+    echo Failed to reset TCP/IP settings.
+    goto :end
+)
+echo Successfully reset TCP/IP settings.
+
 netsh int ipv4 reset
+if %errorlevel% neq 0 (
+    echo Failed to reset IPv4 settings.
+    goto :end
+)
+echo Successfully reset IPv4 settings.
+
 netsh int ipv6 reset
+if %errorlevel% neq 0 (
+    echo Failed to reset IPv6 settings.
+    goto :end
+)
+echo Successfully reset IPv6 settings.
 
-echo Clearing Winsock catalog...
+rem Clear Winsock catalog
 netsh winsock reset
+if %errorlevel% neq 0 (
+    echo Failed to clear Winsock catalog.
+    goto :end
+)
+echo Successfully cleared Winsock catalog.
 
-echo Resetting firewall settings...
+rem Reset firewall settings
 netsh advfirewall reset
+if %errorlevel% neq 0 (
+    echo Failed to reset firewall settings.
+    goto :end
+)
+echo Successfully reset firewall settings.
+
+:end
+echo Network settings reset completed.
 
 exit
