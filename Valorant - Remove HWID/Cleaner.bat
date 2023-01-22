@@ -1170,5 +1170,6 @@ echo Successfully reset firewall settings.
 
 :end
 echo Network settings reset completed.
+pause
 
 exit
