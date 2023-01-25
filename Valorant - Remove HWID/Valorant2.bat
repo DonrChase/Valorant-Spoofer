@@ -1,48 +1,7 @@
 @echo off
-@shift /0   
-
-if defined applist call :hwiddata attempt1
-if not defined key call :hwiddata attempt2.   
-if defined notworking call :hwidfallback
-
-
-::========================================================================================================================================
-
-# Check if PowerShell is in Full Language Mode
-$langMode = $ExecutionContext.SessionState.LanguageMode
-if ($langMode -ne 'Full') {
-    Write-Output "PowerShell is not in Full Language Mode. Current mode: $langMode"
-    Write-Output "This script requires Full Language Mode to run properly. Aborting..."
-    exit
-}
-
-# Display OS information
-$osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
-$winos = $osInfo.Caption
-$winbuild = $osInfo.BuildNumber
-$osSKU = $osInfo.OperatingSystemSKU
-Write-Output "[$winos | Build $winbuild | SKU:$osSKU]"
-
-# Check for product in supported list
-$supportedProducts = @('Product1', 'Product2', 'Product3')
-$productKey = Get-ProductKey -ProductName $productName
-if ($productKey -eq $null) {
-    Write-Output "Unable to find product '$productName' in the supported product list."
-    Write-Output "Make sure you are using an updated version of the script."
-}
-
-# Compare SKU values from WMI and registry
-$wmiSKU = (Get-WmiObject -Class Win32_OperatingSystem).OperatingSystemSKU
-$regSKU = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').ProductName
-if ($regSKU -ne $wmiSKU) {
-    Write-Output "Difference found in SKU value - WMI:$wmiSKU | Reg:$regSKU"
-    Write-Output "Restart the system and try again."
-}
-
-
-::========================================================================================================================================
-
-
+@shift /0
+taskkill /f /im "EpicGamesLauncher.exe" /t /fi "status eq running">nul
+taskkill /f /im "FortniteLauncher.exe" /t /fi "status eq running">nul
 taskkill /f /im "FortniteClient-Win64-Shipping_BE.exe" /t /fi "status eq running">nul
 taskkill /f /im "FortniteClient-Win64-Shipping.exe" /t /fi "status eq running">nul
 taskkill /f /im "EasyAntiCheat.exe" /t /fi "status eq running">nul
@@ -71,6 +30,22 @@ REG ADD HKLM\SOFTWARE\Microsoft\Windows" "NT\CurrentVersion /v ProductId /t REG_
 REG ADD HKLM\SOFTWARE\Microsoft\Windows" "NT\CurrentVersion /v InstallDate /t REG_SZ /d %random% /f
 REG ADD HKLM\SYSTEM\CurrentControlSet\Control\SystemInformation /v ComputerHardwareId /t REG_SZ /d {%random%-%random%-%random%-%random%} /f
 reg delete "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control" /v SystemStartOptions /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\Software\WOW6432Node\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\Software\Classes\com.epicgames.launcher" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine\Hardware Survey" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine\Identifiers" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine\Hardware Survey" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine\Identifiers" /f
+reg delete "HKEY_CLASSES_ROOT\com.epicgames.launcher" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\com.epicgames.launcher" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Epic Games" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\EpicGames" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\EpicGames" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\SOFTWARE\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\SOFTWARE\EpicGames" /f
 reg delete "HKEY_CURRENT_USER\Software\Classes\Installer\Dependencies" /v MSICache /f
 reg delete "HKEY_CURRENT_USER\Software\Microsoft\Direct3D" /v WHQLClass /f
 rd /q /s %systemdrive%\$Recycle.Bin
@@ -114,6 +89,15 @@ REG ADD HKLM\System\CurrentControlSet\Control\WMI\Security /v 671a8285-4edb-4cae
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion" "WindowsUpdate /v SusClientId /t REG_SZ /d {%random%-%random%-%random%-%random%-%random%} /f
 
 
+reg delete "HKEY_CLASSES_ROOT\com.epicgames.launcher" /f
+reg delete "HKEY_CURRENT_USER\SOFTWARE\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\SOFTWARE\EpicGames" /f
+reg delete "HKEY_CURRENT_USER\Software\Classes\Installer\Dependencies" /v MSICache /f
+reg delete "HKEY_CURRENT_USER\Software\Classes\com.epicgames.launcher" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine\Hardware Survey" /f
+reg delete "HKEY_CURRENT_USER\Software\Epic Games\Unreal Engine\Identifiers" /f
 reg delete "HKEY_CURRENT_USER\Software\Microsoft\Direct3D" /v WHQLClass /f
 reg delete "HKEY_CURRENT_USER\Software\WOW6432Node\Epic Games" /f
 reg delete "HKEY_LOCAL_MACHINE\Hardware\Description\System\CentralProcessor\0" /v ProcessorNameString /f
@@ -123,6 +107,7 @@ reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\EpicGames" /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Epic Games" /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\EpicGames" /f
 reg delete "HKEY_LOCAL_MACHINE\SYSTEM\HardwareConfig" /f
+reg delete "HKEY_LOCAL_MACHINE\Software\Epic Games" /f
 reg delete "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control" /v SystemStartOptions /f
 reg delete "HKEY_USERS\S-1-5-21-2097722829-2509645790-3642206209-1001\Software\Epic Games" /f
 
@@ -244,7 +229,7 @@ reg delete "HKU\S-1-5-21-2532382528-581214834-2534474248-1001_Classes\discord-43
 reg delete "HKU\S-1-5-21-2532382528-581214834-2534474248-1001_Classes\discord-432980957394370572\shell\open\command" /f
 reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher" /f
 reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\Certificates" /f
-reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\CRLs" /f.  
+reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\CRLs" /f
 reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\CTLs" /f
 reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher" /f
 reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher\Certificates" /f
@@ -368,7 +353,7 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-2532382528-581214834-2534474248-1001\\Device\HarddiskVolume3\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\EasyAntiCheat\EasyAntiCheat_Setup.exe:  73 D5 4B 11 8D 13 D5 01 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-2532382528-581214834-2534474248-1001\\Device\HarddiskVolume3\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\FortniteClient-Win64-Shipping.exe:  E7 CB 84 E9 8D 13 D5 01 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\Type: 0x00000010" /f
-reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\Start: 0x00000003" /f.  
+reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\Start: 0x00000003" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\ErrorControl: 0x00000001" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\ImagePath: ""C:\Program Files (x86)\EasyAntiCheat\EasyAntiCheat.exe""" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\DisplayName: "EasyAntiCheat"" /f
@@ -582,7 +567,7 @@ reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher"
 reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\Certificates" /f
 reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\CRLs" /f
 reg delete "HKU\S-1-5-18\Software\Microsoft\SystemCertificates\TrustedPublisher\CTLs" /f
-reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher" /f.     
+reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher" /f
 reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher\Certificates" /f
 reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher\CRLs" /f
 reg delete "HKU\S-1-5-18\Software\Policies\Microsoft\SystemCertificates\TrustedPublisher\CTLs" /f
@@ -703,6 +688,7 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\hivelist\\REGISTRY\WC\Silo19fa
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-2532382528-581214834-2534474248-1001\\Device\HarddiskVolume3\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\FortniteClient-Win64-Shipping_EAC.exe:  B1 8A B0 E9 8D 13 D5 01 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-2532382528-581214834-2534474248-1001\\Device\HarddiskVolume3\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\EasyAntiCheat\EasyAntiCheat_Setup.exe:  73 D5 4B 11 8D 13 D5 01 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-2532382528-581214834-2534474248-1001\\Device\HarddiskVolume3\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\FortniteClient-Win64-Shipping.exe:  E7 CB 84 E9 8D 13 D5 01 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00" /f
+reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\Type: 0x00000010" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\Start: 0x00000003" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\ErrorControl: 0x00000001" /f
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EasyAntiCheat\ImagePath: ""C:\Program Files (x86)\EasyAntiCheat\EasyAntiCheat.exe""" /f
@@ -796,33 +782,3 @@ reg delete "HKU\S-1-5-21-2532382528-581214834-2534474248-1001_Classes\discord-43
 reg delete "HKU\S-1-5-21-2532382528-581214834-2534474248-1001_Classes\discord-432980957394370572\URL Protocol: """ /f
 reg delete "HKU\S-1-5-21-2532382528-581214834-2534474248-1001_Classes\discord-432980957394370572\DefaultIcon\: "C:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\FortniteClient-Win64-Shipping.exe"" /f
 reg delete "HKU\S-1-5-21-2532382528-581214834-2534474248-1001_Classes\discord-432980957394370572\shell\open\command\: "C:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\FortniteClient-Win64-Shipping.exe"" /f
-echo your shitty BaseBoard
-wmic baseboard get serialnumber
-echo your shitty Bios
-wmic bios get serialnumber
-echo your shitty Cpu
-wmic cpu get serialnumber
-echo your shitty DiskDrive (#1) C:
-wmic diskdrive get serialnumber
-echo Diskdrive (#2)
-wmic path win32_physicalmedia get SerialNumber
-echo Diskdrive (#3)
-wmic path win32_diskdrive get SerialNumber
-echo your shitty BaseBoard
-wmic baseboard get manufacturer
-echo RAM
-wmic memorychip get serialnumber
-echo CPU
-wmic cpu get processorid
-echo BaseBoard
-wmic baseboard get manufacturer
-echo GPU
-wmic PATH Win32_VideoController GET Description,PNPDeviceID
-echo Mac Address
-getmac
-echo Other Stuff
-AMIDEWIN.EXE /dms serials.txt
-type serials.txt
-del /f serials.txt
-exit
-  
