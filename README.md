@@ -27,7 +27,7 @@
  
 
 
-## 🥱 〢 Use
+## 🥱 〢 How To Use
 
 - Ordered from left to right to prevent confusion / use at your own risk.
 - **Valorant - Remove HWID** Run it after you have completed all the videos.  
