@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  For unbanning Hardware ID 
+  Unban Hardware ID & 152 , 51
 </p>
  
 
