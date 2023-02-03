@@ -9,9 +9,9 @@
 
 
 <p align="center">
-  <img src="https://img.shields.io/github/languages/top/Slackes/Valorant-Spoofer?style=flat-square"/>
-  <img src="https://img.shields.io/github/last-commit/Slackes/Valorant-Spoofer?style=flat-square"/>
-  <img src="https://img.shields.io/github/stars/Slackes/Valorant-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
+  <img src="https://img.shields.io/github/languages/top/Serups/Valorant-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/last-commit/Serups/Valorant-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/stars/Serups/Valorant-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
 
 </p>
 
@@ -22,7 +22,7 @@
 
 ## 💭 〢 Read      
  
-- You can download all the files here. [Download](https://github.com/Slackes/Valorant-Spoofer/releases/tag/Valorant)
+- You can download all the files here. [Download](https://github.com/Serups/Valorant-Spoofer/releases/tag/Valorant)
 - Follow the video first
  
 
@@ -54,7 +54,7 @@
 ## <a id="setup2"></a> 🗒 〢 Product
 - If the free version does not work You can pay to buy a personal project.
 - Safe  on main account without getting banned / no need to turn off virus scan Scroll down to the bottom to read more.
-- [Discord](https://discord.gg/MBTkVcJefp) 
+- [Discord](https://discord.gg/2euDQqzD8Y) 
 
 ---
 
@@ -63,8 +63,14 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
  
  
 --- 
+
+  <p align="center">
+    <a href="https://discord.gg/2euDQqzD8Y">
+        <img title="Serups server discord" alt="Serups discord" src="https://discordapp.com/api/guilds/923947526552432731/widget.png?style=banner2"/>
+    </a>
+</p> 
  
-## 💬 ・[Discord](https://discord.com/users/1031767513077387284) | ADD FRIEND FOR BUY 
+## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y) 
 
  ### 🛒〢 `SHOP`
  
@@ -89,10 +95,9 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
 - Update Free
 - If banned = `REFUND`
 
-A website that I created to introduce myself from start to finish. hope you like it [Slackes.me](http://slackes.me/)
+A website that I created to introduce myself from start to finish. hope you like it [Serups.me](http://Serups.me/)
 
 ---
-
 
   <br>
 
