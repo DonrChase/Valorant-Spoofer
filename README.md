@@ -64,7 +64,7 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
  
 --- 
  
-## 💬 ・[Telegram](https://t.me/Slackes) 
+## 💬 ・[Discord](https://discord.com/users/1031767513077387284) | ADD FRIEND FOR BUY 
 
  ### 🛒〢 `SHOP`
  
