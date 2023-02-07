@@ -4337,10 +4337,29 @@ void MyMACAddr::AssingRndMAC()
 
 void ErasePEHeaderFromMemory()
 {
-	DWORD OldProtect = 0;
-	char* pBaseAddr = (char*)GetModuleHandle(NULL);
-	VirtualProtect(pBaseAddr, 4096, PAGE_READWRITE, &OldProtect);
-	ZeroMemory(pBaseAddr, 4096);
+    DWORD OldProtect = 0;
+    char* pBaseAddr = (char*)GetModuleHandle(NULL);
+    // Ensure pBaseAddr is not NULL before trying to change memory protection
+    if (pBaseAddr == NULL) {
+        return;
+    }
+
+    // Get the size of the header to make sure we only modify the necessary bytes
+    IMAGE_DOS_HEADER* dosHeader = (IMAGE_DOS_HEADER*)pBaseAddr;
+    IMAGE_NT_HEADERS* ntHeaders = (IMAGE_NT_HEADERS*)(pBaseAddr + dosHeader->e_lfanew);
+    DWORD headerSize = ntHeaders->OptionalHeader.SizeOfHeaders;
+
+    // Change memory protection
+    BOOL success = VirtualProtect(pBaseAddr, headerSize, PAGE_READWRITE, &OldProtect);
+    if (!success) {
+        return;
+    }
+
+    // Clear the memory
+    ZeroMemory(pBaseAddr, headerSize);
+
+    // Restore original memory protection
+    VirtualProtect(pBaseAddr, headerSize, OldProtect, &OldProtect);
 }
 
 bool mapDriver(std::vector<uint8_t> file, std::wstring arbitrary_name)
