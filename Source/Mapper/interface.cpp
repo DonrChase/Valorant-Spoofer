@@ -12,29 +12,35 @@ KeInterface::KeInterface()
 
 uintptr_t KeInterface::getKernelModuleBase(const char* name)
 {
-	NTSTATUS status;
-	DWORD bytes = 0;
-	std::vector<byte> buffer;
+    NTSTATUS status;
+    DWORD bytes = 0;
+    std::vector<byte> buffer;
 
-	while ((status = NtQuerySystemInformation((SYSTEM_INFORMATION_CLASS)nt::SystemModuleInformation, buffer.data(), buffer.size(), &bytes)) == nt::STATUS_INFO_LENGTH_MISMATCH)
-	{
-		buffer.resize(bytes);
-	}
+    do 
+    {
+        buffer.resize(bytes);
+        status = NtQuerySystemInformation((SYSTEM_INFORMATION_CLASS)nt::SystemModuleInformation, buffer.data(), buffer.size(), &bytes);
+    } while (status == nt::STATUS_INFO_LENGTH_MISMATCH);
 
-	if (!NT_SUCCESS(status))
-		return 0;
+    if (!NT_SUCCESS(status))
+    {
+        return 0;
+    }
 
-	nt::PSYSTEM_MODULE_INFORMATION pSystemModuleInfo = nt::PSYSTEM_MODULE_INFORMATION(buffer.data());
-	nt::PSYSTEM_MODULE pModule = pSystemModuleInfo->Modules;
-	for (int i = 0; i < pSystemModuleInfo->NumberOfModules; i++, pModule++)
-	{
-		PCHAR moduleName = PCHAR(uintptr_t(pModule->FullPathName) + pModule->OffsetToFileName);
-		if (!strcmp(name, moduleName))
-			return uintptr_t(pModule->ImageBase);
-	}
+    nt::PSYSTEM_MODULE_INFORMATION pSystemModuleInfo = nt::PSYSTEM_MODULE_INFORMATION(buffer.data());
+    nt::PSYSTEM_MODULE pModule = pSystemModuleInfo->Modules;
+    for (int i = 0; i < pSystemModuleInfo->NumberOfModules; i++, pModule++)
+    {
+        PCHAR moduleName = PCHAR(reinterpret_cast<uintptr_t>(pModule->FullPathName) + pModule->OffsetToFileName);
+        if (!strcmp(name, moduleName))
+        {
+            return reinterpret_cast<uintptr_t>(pModule->ImageBase);
+        }
+    }
 
-	return 0;
+    return 0;
 }
+
 
 uintptr_t KeInterface::getModuleExport(const char* module_name, uintptr_t module_base)
 {
