@@ -13,40 +13,36 @@
 #define TBX_XSTR_SEED (6637ull)
 #endif
 
-namespace crypt
-{
-    constexpr unsigned long long linear_congruent_generator(unsigned rounds)
-    {
-        return 10133792423ull + (166167355ull * ((rounds > 0) ? linear_congruent_generator(rounds - 1) : (XSTR_SEED))) % 0xBFC66BFE;
-    }
-#define Random() linear_congruent_generator(10)
-#define XSTR_RANDOM_NUMBER(Min, Max) (Min + (Random() % (Max - Min + 1)))
+namespace crypt {
+    static std::mt19937_64 eng(10133792423ull);
+    static std::uniform_int_distribution<std::uint8_t> dist(0, 0xff);
 
-    constexpr const unsigned long long XORKEY = XSTR_RANDOM_NUMBER(0, 0xFF);
-    template<typename Char >
-    constexpr Char encrypt_character(const Char character, int index)
-    {
-        return static_cast<Char>(character ^ (static_cast<Char>(XORKEY) + index));
+    inline std::uint8_t random_key() { return dist(eng); }
+
+    template<typename Char>
+    Char encrypt_character(const Char character, std::uint8_t key, int index) {
+        return static_cast<Char>(character ^ (key + index));
     }
-    template <unsigned size, typename Char>
+
+    template<unsigned size, typename Char>
     class Xor_string {
     public:
-        const unsigned _nb_chars = (size - 1);
         Char _string[size];
-        inline constexpr Xor_string(const Char* string)
-            : _string{}
-        {
-            for (unsigned i = 0u; i < size; ++i)
-                _string[i] = encrypt_character<Char>(string[i], i);
-        }
-        const Char* decrypt() const
-        {
-            Char* string = const_cast<Char*>(_string);
-            for (unsigned t = 0; t < _nb_chars; t++)
-            {
-                string[t] = static_cast<Char>(string[t] ^ (static_cast<Char>(XORKEY) + t));
+
+        Xor_string(const Char* string) {
+            std::uint8_t key = random_key();
+            for (unsigned i = 0u; i < size - 1; ++i) {
+                _string[i] = encrypt_character<Char>(string[i], key, i);
             }
-            string[_nb_chars] = '\0';
+            _string[size - 1] = '\0';
+        }
+
+        const Char* decrypt() const {
+            Char* string = const_cast<Char*>(_string);
+            std::uint8_t key = random_key();
+            for (unsigned t = 0; t < size - 1; t++) {
+                string[t] = static_cast<Char>(string[t] ^ (key + t));
+            }
             return string;
         }
     };
