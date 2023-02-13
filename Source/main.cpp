@@ -638,7 +638,9 @@ void ResetDevice()
     ImGui_ImplDX9_InvalidateDeviceObjects();
     HRESULT hr = g_pd3dDevice->Reset(&g_d3dpp);
     if (hr == D3DERR_INVALIDCALL)
+    {
         IM_ASSERT(0);
+    }
     ImGui_ImplDX9_CreateDeviceObjects();
 }
 
@@ -650,37 +652,53 @@ void ResetDevice()
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 // Win32 message handler
-LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
+    {
         return true;
+    }
 
     switch (msg)
     {
-    case WM_SIZE:
-        if (g_pd3dDevice != NULL && wParam != SIZE_MINIMIZED)
+        case WM_SIZE:
         {
-            g_d3dpp.BackBufferWidth = LOWORD(lParam);
-            g_d3dpp.BackBufferHeight = HIWORD(lParam);
-            ResetDevice();
-        }
-        return 0;
-    case WM_SYSCOMMAND:
-        if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
+            if (g_pd3dDevice != NULL && wParam != SIZE_MINIMIZED)
+            {
+                g_d3dpp.BackBufferWidth = LOWORD(lParam);
+                g_d3dpp.BackBufferHeight = HIWORD(lParam);
+                ResetDevice();
+            }
             return 0;
-        break;
-    case WM_DESTROY:
-        ::PostQuitMessage(0);
-        return 0;
-    case WM_DPICHANGED:
-        if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
-        {
-            //const int dpi = HIWORD(wParam);
-            //printf("WM_DPICHANGED to %d (%.0f%%)\n", dpi, (float)dpi / 96.0f * 100.0f);
-            const RECT* suggested_rect = (RECT*)lParam;
-            ::SetWindowPos(hWnd, NULL, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
         }
-        break;
+        case WM_SYSCOMMAND:
+        {
+            if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
+            {
+                return 0;
+            }
+            break;
+        }
+        case WM_DESTROY:
+        {
+            ::PostQuitMessage(0);
+            return 0;
+        }
+        case WM_DPICHANGED:
+        {
+            if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
+            {
+                //const int dpi = HIWORD(wParam);
+                //printf("WM_DPICHANGED to %d (%.0f%%)\n", dpi, (float)dpi / 96.0f * 100.0f);
+                const RECT* suggested_rect = (RECT*)lParam;
+                ::SetWindowPos(hWnd, NULL, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
+            }
+            break;
+        }
+        default:
+        {
+            break;
+        }
     }
-	return false;
+    return ::DefWindowProc(hWnd, msg, wParam, lParam);
 }
