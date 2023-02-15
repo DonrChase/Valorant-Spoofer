@@ -70,10 +70,10 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
     </a>
 </p> 
  
-## 💬 ・[Discord Server](https://discord.gg/2euDQqzD8Y) 
+## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y) | MAIN SERVER
 `CLICK BLUE BUTTON FOR JOIN SERVER.`
 
- ### 🛒〢 `PRODUCT`
+ ### 🛒〢 `SHOP`
  
 <table>
 <tr>
