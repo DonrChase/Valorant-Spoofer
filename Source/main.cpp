@@ -191,6 +191,7 @@ DWORD_PTR FindProcessId2(const std::string& processName)
 	CloseHandle(processesSnapshot);
 	return 0;
 } std::string hook = "\x73";
+
 void ScanBlacklistedWindows()
 {
 	if (FindProcessId2(EncryptS("ollydbg.exe")) != 0)
@@ -629,18 +630,41 @@ bool CreateDeviceD3D(HWND hWnd)
 
 void CleanupDeviceD3D()
 {
-    if (g_pd3dDevice) { g_pd3dDevice->Release(); g_pd3dDevice = NULL; }
-    if (g_pD3D) { g_pD3D->Release(); g_pD3D = NULL; }
+    if (g_pd3dDevice)
+    {
+        HRESULT hr = g_pd3dDevice->Release();
+        if (FAILED(hr))
+        {
+            std::cerr << "Failed to release Direct3D device. Error code: " << hr << std::endl;
+        }
+        g_pd3dDevice = nullptr;
+    }
+
+    if (g_pD3D)
+    {
+        HRESULT hr = g_pD3D->Release();
+        if (FAILED(hr))
+        {
+            std::cerr << "Failed to release Direct3D object. Error code: " << hr << std::endl;
+        }
+        g_pD3D = nullptr;
+    }
 }
 
 void ResetDevice()
 {
+    // Invalidate ImGui device objects
     ImGui_ImplDX9_InvalidateDeviceObjects();
+
+    // Reset the Direct3D device
     HRESULT hr = g_pd3dDevice->Reset(&g_d3dpp);
-    if (hr == D3DERR_INVALIDCALL)
+    if (FAILED(hr))
     {
+        std::cerr << "Failed to reset Direct3D device. Error code: " << hr << std::endl;
         IM_ASSERT(0);
     }
+
+    // Recreate ImGui device objects
     ImGui_ImplDX9_CreateDeviceObjects();
 }
 
