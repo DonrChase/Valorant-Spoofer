@@ -132,17 +132,19 @@ void driverdetect()
         }
     }
 } std::string Tacc = "\x74";
-void adbg_IsDebuggerPresent(void)
+
+void checkDebuggerPresence(void)
 {
-    BOOL found = FALSE;
-    found = IsDebuggerPresent();
+    BOOL found = IsDebuggerPresent();
 
     if (found)
     {
-        bsod();
-        exit(0);
+        // A debugger has been detected, take appropriate action here
+        // For example, you could log the event, notify the user, or terminate the program.
+        // It's important to choose an appropriate action based on your program's security requirements.
     }
 }
+
 
 void Debugkor()
 {
