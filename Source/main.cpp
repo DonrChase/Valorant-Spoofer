@@ -703,46 +703,58 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         return true;
     }
 
-    switch (msg)
+// Handle other messages
+switch (uMsg)
+{
+    case WM_SIZE:
     {
-        case WM_SIZE:
+        if (g_pd3dDevice != nullptr && wParam != SIZE_MINIMIZED)
         {
-            if (g_pd3dDevice != NULL && wParam != SIZE_MINIMIZED)
-            {
-                g_d3dpp.BackBufferWidth = LOWORD(lParam);
-                g_d3dpp.BackBufferHeight = HIWORD(lParam);
-                ResetDevice();
-            }
+            // Update back buffer dimensions
+            g_d3dpp.BackBufferWidth = LOWORD(lParam);
+            g_d3dpp.BackBufferHeight = HIWORD(lParam);
+
+            // Reset the device
+            ResetDevice();
+
             return 0;
         }
-        case WM_SYSCOMMAND:
-        {
-            if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
-            {
-                return 0;
-            }
-            break;
-        }
-        case WM_DESTROY:
-        {
-            ::PostQuitMessage(0);
-            return 0;
-        }
-        case WM_DPICHANGED:
-        {
-            if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
-            {
-                //const int dpi = HIWORD(wParam);
-                //printf("WM_DPICHANGED to %d (%.0f%%)\n", dpi, (float)dpi / 96.0f * 100.0f);
-                const RECT* suggested_rect = (RECT*)lParam;
-                ::SetWindowPos(hWnd, NULL, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
-            }
-            break;
-        }
-        default:
-        {
-            break;
-        }
+        break;
     }
-    return ::DefWindowProc(hWnd, msg, wParam, lParam);
+
+    case WM_SYSCOMMAND:
+    {
+        // Disable the ALT application menu
+        if ((wParam & 0xFFF0) == SC_KEYMENU)
+        {
+            return 0;
+        }
+        break;
+    }
+
+    case WM_DESTROY:
+    {
+        // Post a quit message to exit the application
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    case WM_DPICHANGED:
+    {
+        // If DPI scaling is enabled, adjust the window size and position
+        if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
+        {
+            const RECT* pRect = reinterpret_cast<const RECT*>(lParam);
+            SetWindowPos(hWnd, nullptr, pRect->left, pRect->top, pRect->right - pRect->left, pRect->bottom - pRect->top, SWP_NOZORDER | SWP_NOACTIVATE);
+            return 0;
+        }
+        break;
+    }
+
+    default:
+        break;
 }
+
+// Call the default window procedure for any unhandled messages
+return DefWindowProc(hWnd, uMsg, wParam, lParam);
+
