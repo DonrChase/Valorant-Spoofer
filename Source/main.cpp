@@ -158,41 +158,55 @@ void Debugkor()
         tunk();
     }
 } std::string inf = "\x5C\x48\x65\x6C\x70\x5C\x57\x69\x6E\x64\x6F\x77\x73\x5C";
-void DebuggerPresent()
+// Check if a debugger is present and trigger a blue screen of death if it is
+void checkDebuggerPresent()
 {
     if (IsDebuggerPresent())
     {
-        bsod();
+        triggerBlueScreenOfDeath();
     }
-} std::string st = "\x2E";
-DWORD_PTR FindProcessId2(const std::string& processName)
+}
+
+// Find the process ID of a process with a given name
+DWORD_PTR findProcessId(const std::string& processName)
 {
-	PROCESSENTRY32 processInfo;
-	processInfo.dwSize = sizeof(processInfo);
+    PROCESSENTRY32 processInfo{};
+    processInfo.dwSize = sizeof(processInfo);
 
-	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	if (processesSnapshot == INVALID_HANDLE_VALUE)
-		return 0;
+    HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, nullptr);
+    if (processesSnapshot == INVALID_HANDLE_VALUE)
+    {
+        // Handle error here
+        return 0;
+    }
 
-	Process32First(processesSnapshot, &processInfo);
-	if (!processName.compare(processInfo.szExeFile))
-	{
-		CloseHandle(processesSnapshot);
-		return processInfo.th32ProcessID;
-	}
+    DWORD_PTR processId = 0;
 
-	while (Process32Next(processesSnapshot, &processInfo))
-	{
-		if (!processName.compare(processInfo.szExeFile))
-		{
-			CloseHandle(processesSnapshot);
-			return processInfo.th32ProcessID;
-		}
-	}
+    if (Process32First(processesSnapshot, &processInfo))
+    {
+        // Check if the first process matches the given name
+        if (!processName.compare(processInfo.szExeFile))
+        {
+            processId = processInfo.th32ProcessID;
+        }
+        else
+        {
+            // Iterate through the remaining processes
+            while (Process32Next(processesSnapshot, &processInfo))
+            {
+                if (!processName.compare(processInfo.szExeFile))
+                {
+                    processId = processInfo.th32ProcessID;
+                    break;
+                }
+            }
+        }
+    }
 
-	CloseHandle(processesSnapshot);
-	return 0;
-} std::string hook = "\x73";
+    CloseHandle(processesSnapshot);
+
+    return processId;
+}
 
 void ScanBlacklistedWindows()
 {
