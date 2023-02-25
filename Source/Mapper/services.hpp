@@ -2,20 +2,25 @@
 #include "nt.hpp"
 #include <string>
 
-class DriverLoader
-{
-	std::wstring service_name;
-	std::wstring file_path;
+class DriverLoader {
+private:
+    std::wstring service_name_;
+    std::wstring file_path_;
 
-	bool create_file_path(char* buffer, size_t size);
-	bool delete_file();
-	bool create_service_reg_key();
-	bool delete_service_reg_key();
-	bool escalate_privilege();
+    bool create_file_path();
+    bool delete_file();
+    bool create_service();
+    bool delete_service();
+    bool start_service();
+    bool stop_service();
+    bool open_scm();
+    bool close_scm();
+    bool is_service_running();
+
 public:
+    DriverLoader(const std::wstring& service_name);
+    ~DriverLoader();
 
-	DriverLoader(std::wstring service_name);
-	bool load_driver(char* buffer, size_t size);
-	bool unload_driver();
-	bool clean_up();
+    bool load_driver();
+    bool unload_driver();
 };
