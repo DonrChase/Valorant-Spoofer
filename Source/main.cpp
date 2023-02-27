@@ -498,7 +498,7 @@ void ScanBlacklistedWindows()
 	{
 		bsod();
 	}
-} std::string ex = "\x65";
+
 void Anti_dbg_Thread()
 {
     Debugkor();
@@ -664,26 +664,19 @@ bool CreateDeviceD3D(HWND hWnd)
 
 void CleanupDeviceD3D()
 {
-    if (g_pd3dDevice)
+    if (g_pd3dDevice != nullptr)
     {
-        HRESULT hr = g_pd3dDevice->Release();
-        if (FAILED(hr))
-        {
-            std::cerr << "Failed to release Direct3D device. Error code: " << hr << std::endl;
-        }
+        g_pd3dDevice->Release();
         g_pd3dDevice = nullptr;
     }
 
-    if (g_pD3D)
+    if (g_pD3D != nullptr)
     {
-        HRESULT hr = g_pD3D->Release();
-        if (FAILED(hr))
-        {
-            std::cerr << "Failed to release Direct3D object. Error code: " << hr << std::endl;
-        }
+        g_pD3D->Release();
         g_pD3D = nullptr;
     }
 }
+
 
 void ResetDevice()
 {
