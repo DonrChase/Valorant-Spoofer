@@ -13,7 +13,7 @@
 #define TBX_XSTR_SEED (6637ull)
 #endif
 
-namespace crypt {
+namespace Spoofer {
     static std::mt19937_64 eng(10133792423ull);
     static std::uniform_int_distribution<std::uint8_t> dist(0, 0xff);
 
@@ -48,7 +48,7 @@ namespace crypt {
     };
 }
 
-namespace
+namespace Valorant_Spoofer
 {
     constexpr int const_atoi(char c)
     {
@@ -95,43 +95,30 @@ public:
     }
 
 private:
-    template<size_t... indices>
-    constexpr ALWAYS_INLINE _Basic_XorStr(value_type const (&str)[_length], std::index_sequence<indices...>)
-        : data{ crypt(str[indices], indices)..., '\0' },
-        encrypted(true)
-    {
-
-    }
-
-    static constexpr auto XOR_KEY = static_cast<value_type>(
-        const_atoi(__TIME__[7]) +
-        const_atoi(__TIME__[6]) * 10 +
-        const_atoi(__TIME__[4]) * 60 +
-        const_atoi(__TIME__[3]) * 600 +
-        const_atoi(__TIME__[1]) * 3600 +
-        const_atoi(__TIME__[0]) * 36000
+    static constexpr auto XOR_KEY = []{
+        auto const time_str = __TIME__;
+        return static_cast<value_type>(
+            const_atoi<value_type>(time_str[0]) * 36000 +
+            const_atoi<value_type>(time_str[1]) * 3600 +
+            const_atoi<value_type>(time_str[3]) * 600 +
+            const_atoi<value_type>(time_str[4]) * 60 +
+            const_atoi<value_type>(time_str[6]) * 10 +
+            const_atoi<value_type>(time_str[7])
         );
+    }();
 
-    static ALWAYS_INLINE constexpr auto crypt(value_type c, size_t i)
+    static constexpr value_type crypt(value_type c, std::size_t i) noexcept
     {
         return static_cast<value_type>(c ^ (XOR_KEY + i));
     }
 
-    inline void decrypt() const
-    {
-        if (encrypted)
-        {
-            for (size_t t = 0; t < _length_minus_one; t++)
-            {
-                data[t] = crypt(data[t], t);
-            }
-            encrypted = false;
-        }
-    }
+    value_type data[length];
+    bool encrypted{ true };
+{
 
     mutable value_type data[_length];
     mutable bool encrypted;
-};
+}
 
 //---------------------------------------------------------------------------
 template<size_t _length>
