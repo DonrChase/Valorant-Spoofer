@@ -94,31 +94,23 @@ public:
         return str();
     }
 
-private:
-    static constexpr auto XOR_KEY = []{
-        auto const time_str = __TIME__;
-        return static_cast<value_type>(
-            const_atoi<value_type>(time_str[0]) * 36000 +
-            const_atoi<value_type>(time_str[1]) * 3600 +
-            const_atoi<value_type>(time_str[3]) * 600 +
-            const_atoi<value_type>(time_str[4]) * 60 +
-            const_atoi<value_type>(time_str[6]) * 10 +
-            const_atoi<value_type>(time_str[7])
-        );
-    }();
+    void decrypt() noexcept {
+        if (encrypted) {
+            for (std::size_t i = 0; i < array_size(data); ++i) {
+                data[i] = crypt(data[i], i);
+            }
+            encrypted = false;
+        }
+    }
 
-    static constexpr value_type crypt(value_type c, std::size_t i) noexcept
-    {
+private:
+    static constexpr value_type crypt(value_type c, std::size_t i) noexcept {
         return static_cast<value_type>(c ^ (XOR_KEY + i));
     }
 
     value_type data[length];
-    bool encrypted{ true };
-{
-
-    mutable value_type data[_length];
-    mutable bool encrypted;
-}
+    bool encrypted{ false };
+};
 
 //---------------------------------------------------------------------------
 template<size_t _length>
