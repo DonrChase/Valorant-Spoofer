@@ -3,15 +3,6 @@
 #include <string>
 #include <utility>
 
-#pragma once
-#define XSTR_SEED 78456
-#if 0
-#define TBX_XSTR_SEED ((__TIME__[7] - '0') * 1ull    + (__TIME__[6] - '0') * 10ull  + \
-                       (__TIME__[4] - '0') * 60ull   + (__TIME__[3] - '0') * 600ull + \
-                       (__TIME__[1] - '0') * 3600ull + (__TIME__[0] - '0') * 36000ull)
-#else
-#define TBX_XSTR_SEED (6637ull)
-#endif
 
 namespace Spoofer {
     static std::mt19937_64 eng(10133792423ull);
