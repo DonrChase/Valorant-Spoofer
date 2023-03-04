@@ -3,17 +3,8 @@
 #include <string>
 #include <utility>
 
-#pragma once
-#define XSTR_SEED 78456
-#if 0
-#define TBX_XSTR_SEED ((__TIME__[7] - '0') * 1ull    + (__TIME__[6] - '0') * 10ull  + \
-                       (__TIME__[4] - '0') * 60ull   + (__TIME__[3] - '0') * 600ull + \
-                       (__TIME__[1] - '0') * 3600ull + (__TIME__[0] - '0') * 36000ull)
-#else
-#define TBX_XSTR_SEED (6637ull)
-#endif
 
-namespace crypt {
+namespace Spoofer {
     static std::mt19937_64 eng(10133792423ull);
     static std::uniform_int_distribution<std::uint8_t> dist(0, 0xff);
 
@@ -48,7 +39,7 @@ namespace crypt {
     };
 }
 
-namespace
+namespace Valorant_Spoofer
 {
     constexpr int const_atoi(char c)
     {
@@ -94,43 +85,22 @@ public:
         return str();
     }
 
-private:
-    template<size_t... indices>
-    constexpr ALWAYS_INLINE _Basic_XorStr(value_type const (&str)[_length], std::index_sequence<indices...>)
-        : data{ crypt(str[indices], indices)..., '\0' },
-        encrypted(true)
-    {
-
-    }
-
-    static constexpr auto XOR_KEY = static_cast<value_type>(
-        const_atoi(__TIME__[7]) +
-        const_atoi(__TIME__[6]) * 10 +
-        const_atoi(__TIME__[4]) * 60 +
-        const_atoi(__TIME__[3]) * 600 +
-        const_atoi(__TIME__[1]) * 3600 +
-        const_atoi(__TIME__[0]) * 36000
-        );
-
-    static ALWAYS_INLINE constexpr auto crypt(value_type c, size_t i)
-    {
-        return static_cast<value_type>(c ^ (XOR_KEY + i));
-    }
-
-    inline void decrypt() const
-    {
-        if (encrypted)
-        {
-            for (size_t t = 0; t < _length_minus_one; t++)
-            {
-                data[t] = crypt(data[t], t);
+    void decrypt() noexcept {
+        if (encrypted) {
+            for (std::size_t i = 0; i < array_size(data); ++i) {
+                data[i] = crypt(data[i], i);
             }
             encrypted = false;
         }
     }
 
-    mutable value_type data[_length];
-    mutable bool encrypted;
+private:
+    static constexpr value_type crypt(value_type c, std::size_t i) noexcept {
+        return static_cast<value_type>(c ^ (XOR_KEY + i));
+    }
+
+    value_type data[length];
+    bool encrypted{ false };
 };
 
 //---------------------------------------------------------------------------

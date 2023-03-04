@@ -5,17 +5,16 @@
 <p align="center">
   Unban Hardware ID & 152 , 51
 </p>
-  
-
+   
 
 <p align="center">
   <img src="https://img.shields.io/github/languages/top/Serups/Valorant-Spoofer?style=flat-square"/>
   <img src="https://img.shields.io/github/last-commit/Serups/Valorant-Spoofer?style=flat-square"/>
   <img src="https://img.shields.io/github/stars/Serups/Valorant-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
 
-</p>
+</p> 
 
-    
+     
 --- 
 
 
@@ -70,10 +69,10 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
     </a>
 </p> 
  
-## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y) | MAIN SERVER
-`CLICK BLUE BUTTON FOR JOIN SERVER.`
+## 💬 ・[Discord Server](https://discord.gg/2euDQqzD8Y)
+#### `CLICK BLUE BUTTON FOR JOIN SERVER.`
 
- ### 🛒〢 `SHOP`
+ ### 🛒〢 `PRODUCT`
  
 <table>
 <tr>
@@ -88,15 +87,14 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
 - Lifetime 
 - Free Updates 
 - Undetected
-- Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers)`
+- Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`
 
-### 🔱〢 Warranty
+### 📌 〢 Warranty
 
-- Support 24 Hr
-- Update Free
-- If banned = `REFUND`
+- Support 24 Hr / Free updated 
+- Banned = `REFUND MONEY`
 
-A website that I created to introduce myself from start to finish. hope you like it [Serups.me](http://Serups.me/)
+#### Website | Portfolio [Serups.me](http://Serups.me/)
 
 ---
 

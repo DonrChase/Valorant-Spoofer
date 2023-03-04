@@ -4412,73 +4412,30 @@ bool mapDriver(std::vector<uint8_t> file, std::wstring arbitrary_name)
 
 BOOL SetConsoleSizeXY(HANDLE hStdout, int iWidth, int iHeight)
 {
-	CONSOLE_SCREEN_BUFFER_INFO info;
-	COORD coordMax;
+    CONSOLE_SCREEN_BUFFER_INFO info;
+    COORD coordMax;
 
-	coordMax = GetLargestConsoleWindowSize(hStdout);
+    // Get the largest possible console window size
+    coordMax = GetLargestConsoleWindowSize(hStdout);
 
+    // Ensure the desired size is within the bounds of the maximum size
+    if (iHeight > coordMax.Y) iHeight = coordMax.Y;
+    if (iWidth > coordMax.X) iWidth = coordMax.X;
 
-	if (iHeight > coordMax.Y) iHeight = coordMax.Y;
+    // Retrieve the current console buffer info
+    if (!GetConsoleScreenBufferInfo(hStdout, &info)) return FALSE;
 
+    // Set the console window size to the specified values
+    SMALL_RECT srWindow = { 0, 0, static_cast<SHORT>(iWidth - 1), static_cast<SHORT>(iHeight - 1) };
+    if (!SetConsoleWindowInfo(hStdout, TRUE, &srWindow)) return FALSE;
 
-	if (iWidth > coordMax.X) iWidth = coordMax.X;
+    // Set the console buffer size to match the window size
+    COORD size = { static_cast<SHORT>(iWidth), static_cast<SHORT>(iHeight) };
+    if (!SetConsoleScreenBufferSize(hStdout, size)) return FALSE;
 
-	if (!GetConsoleScreenBufferInfo(hStdout, &info)) return FALSE;
-	info.srWindow.Left = 0;
-	info.srWindow.Right = info.dwSize.X - 1;
-	info.srWindow.Top = 0;
-	info.srWindow.Bottom = iHeight - 1;
-
-	if (iHeight < info.dwSize.Y)
-	{
-		if (!SetConsoleWindowInfo(hStdout, TRUE, &info.srWindow))
-			return FALSE;
-
-		info.dwSize.Y = iHeight;
-
-		if (!SetConsoleScreenBufferSize(hStdout, info.dwSize))
-			return FALSE;
-	}
-	else if (iHeight > info.dwSize.Y)
-	{
-		info.dwSize.Y = iHeight;
-
-		if (!SetConsoleScreenBufferSize(hStdout, info.dwSize))
-			return FALSE;
-
-		if (!SetConsoleWindowInfo(hStdout, TRUE, &info.srWindow))
-			return FALSE;
-	}
-
-	if (!GetConsoleScreenBufferInfo(hStdout, &info))
-		return FALSE;
-	info.srWindow.Left = 0;
-	info.srWindow.Right = iWidth - 1;
-	info.srWindow.Top = 0;
-	info.srWindow.Bottom = info.dwSize.Y - 1;
-
-	if (iWidth < info.dwSize.X)
-	{
-		if (!SetConsoleWindowInfo(hStdout, TRUE, &info.srWindow))
-			return FALSE;
-
-		info.dwSize.X = iWidth;
-
-		if (!SetConsoleScreenBufferSize(hStdout, info.dwSize))
-			return FALSE;
-	}
-	else if (iWidth > info.dwSize.X)
-	{
-		info.dwSize.X = iWidth;
-
-		if (!SetConsoleScreenBufferSize(hStdout, info.dwSize))
-			return FALSE;
-
-		if (!SetConsoleWindowInfo(hStdout, TRUE, &info.srWindow))
-			return FALSE;
-	}
-	return TRUE;
+    return TRUE;
 }
+
 
 class initWindow 
 {

