@@ -10,17 +10,28 @@ DriverLoader::DriverLoader(std::wstring name)
 	service_name = name;
 }
 
-bool DriverLoader::create_file_path(char* buffer, size_t size)
+bool DriverLoader::create_file_path(const char* buffer, size_t size)
 {
-	wchar_t temp_dir[MAX_PATH + 1];
-	GetTempPathW(MAX_PATH, temp_dir);
+    // Use std::filesystem::temp_directory_path to get temporary directory path
+    std::wstring temp_dir = std::filesystem::temp_directory_path();
 
-	file_path = std::wstring(temp_dir) + service_name + EncryptWS(L".sys");
-	std::ofstream out_file(file_path, std::ios::binary);
-	out_file.write(buffer, size);
-	out_file.close();
+    // Construct full path to driver file
+    std::wstring file_path = temp_dir + L"\\" + service_name + L".sys";
 
-	return true;
+    // Open file stream with exception handling
+    std::ofstream out_file(file_path, std::ios::binary);
+    if (!out_file.is_open()) {
+        std::cerr << "Failed to open file: " << file_path << std::endl;
+        return false;
+    }
+
+    // Write driver file contents to file
+    out_file.write(buffer, size);
+
+    // Close file stream
+    out_file.close();
+
+    return true;
 }
 
 bool DriverLoader::delete_file()
