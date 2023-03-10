@@ -23,8 +23,12 @@
  
 - You can download all the files here. [Download](https://github.com/Serups/Valorant-Spoofer/releases/tag/Valorant)
 - Follow the video first
+- **Scroll Down for Raed more**
  
+#### ❗ Help & Support
+- Not understand How To Use | Join Discord For Helps: [Discord Servers](https://discord.gg/2euDQqzD8Y)
 
+---
 
 ## 🥱 〢 How To Use
 
@@ -50,7 +54,7 @@
 - Register Account Valorant + Download
 - Enjoy ! 
 
-## <a id="setup2"></a> 🗒 〢 Undetected
+### <a id="setup2"></a> 🗒 〢 Undetected
 - Free version is used by many Users, Detected are quite High | Our recommended alternative is Private Cheat.
 - **Legit Playing & Waranty & Lifetime | Up To You.**
 - [Discord Server](https://discord.gg/2euDQqzD8Y) 
