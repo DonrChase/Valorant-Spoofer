@@ -15,7 +15,7 @@
 </p> 
 
      
---- 
+---  
 
 
 
@@ -23,8 +23,12 @@
  
 - You can download all the files here. [Download](https://github.com/Serups/Valorant-Spoofer/releases/tag/Valorant)
 - Follow the video first
+- **Scroll Down for Raed more**
  
+#### ❗ Help & Support
+- Not understand How To Use | Join Discord For Helps: [Discord Servers](https://discord.gg/2euDQqzD8Y)
 
+---
 
 ## 🥱 〢 How To Use
 
@@ -50,10 +54,11 @@
 - Register Account Valorant + Download
 - Enjoy ! 
 
-## <a id="setup2"></a> 🗒 〢 Product
-- If the free version does not work You can pay to buy a personal project.
-- Safe  on main account without getting banned / no need to turn off virus scan Scroll down to the bottom to read more.
-- [Discord](https://discord.gg/2euDQqzD8Y) 
+### <a id="setup2"></a> 🗒 〢 Undetected
+- Free version is used by many Users, Detected are quite High | Our recommended alternative is Private Cheat.
+- **Legit Playing & Waranty & Lifetime | Up To You.**
+- [Discord Server](https://discord.gg/2euDQqzD8Y) 
+
 
 ---
 
@@ -69,37 +74,37 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
     </a>
 </p> 
  
-## 💬 ・[Discord Server](https://discord.gg/2euDQqzD8Y)
-#### `CLICK BLUE BUTTON FOR JOIN SERVER.`
+## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y)
 
- ### 🛒〢 `PRODUCT`
+`BLUE BUTTON FOR JOIN SERVER`
+
+ ### 🛒〢 `SHOP`
  
 <table>
 <tr>
 	<td> PRIVATE CHEAT
-	<td> SPOOFER
+	<td> PRIVATE SPOOFER
 	<td> SOURCE CODE
 </table>
 
   
-### 🥊 〢 Private Cheat
+### 🎈 〢 Private Cheat
 
-- Lifetime 
-- Free Updates 
-- Undetected
-- Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`
+- Lifetime & Free updated
+- Undetected / Legit
+- **Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`**
 
-### 📌 〢 Warranty
+### 🩹 〢 Warranty
 
-- Support 24 Hr / Free updated 
-- Banned = `REFUND MONEY`
+- **Support 24/7 & Free updated** 
+- **Banned = `FULL REFUND`**
 
-#### Website | Portfolio [Serups.me](http://Serups.me/)
+#### Website | Resume [Serups.me](http://Serups.me/)
 
 ---
 
   <br>
 
 <p align="center">
-  Copyright © 2021 - 2022
+  Copyright © 2023 All rights reserved
 <br>
