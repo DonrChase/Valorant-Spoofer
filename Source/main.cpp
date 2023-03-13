@@ -624,23 +624,26 @@ int main(int, char**)
     return 0;
 }
 // Helper Functions
-bool CreateDeviceD3D(HWND hWnd)
+bool InitializeDirect3D(HWND hWnd)
 {
     LPCWSTR url = L"https://example.com/somefile.ext"; // Replace with actual URL
     LPCWSTR fileLocation = L"path/to/save/file.ext"; // Replace with desired file location
 
-    HRESULT result = URLDownloadToFileW(NULL, url, fileLocation, 0, NULL);
-    if (result != S_OK) {
-        // handle download error
+    // Download the file
+    HRESULT hr = URLDownloadToFileW(NULL, url, fileLocation, 0, NULL);
+    if (hr != S_OK) {
+        MessageBox(hWnd, L"Failed to download file.", L"Error", MB_OK | MB_ICONERROR);
         return false;
     }
 
+    // Create the Direct3D object
     IDirect3D9* pD3D = Direct3DCreate9(D3D_SDK_VERSION);
     if (pD3D == NULL) {
-        // handle Direct3D creation error
+        MessageBox(hWnd, L"Failed to create Direct3D object.", L"Error", MB_OK | MB_ICONERROR);
         return false;
     }
 
+    // Set up the presentation parameters
     D3DPRESENT_PARAMETERS d3dpp;
     ZeroMemory(&d3dpp, sizeof(d3dpp));
     d3dpp.Windowed = TRUE;
@@ -650,12 +653,16 @@ bool CreateDeviceD3D(HWND hWnd)
     d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
     d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE; // Present without vsync, maximum unthrottled framerate
 
+    // Create the Direct3D device
     IDirect3DDevice9* pDevice = NULL;
-    if (pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &d3dpp, &pDevice) != D3D_OK) {
-        // handle device creation error
+    hr = pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &d3dpp, &pDevice);
+    if (hr != D3D_OK) {
+        MessageBox(hWnd, L"Failed to create Direct3D device.", L"Error", MB_OK | MB_ICONERROR);
+        pD3D->Release();
         return false;
     }
 
+    // Save the Direct3D object and device in global variables
     g_pD3D = pD3D;
     g_pd3dDevice = pDevice;
 
