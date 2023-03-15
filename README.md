@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  Unban Hardware ID & 152 , 51
+  Unban Hardware ID & CODE | 152 , 51
 </p>
    
 
@@ -26,7 +26,7 @@
 - **Scroll Down for Raed more**
  
 #### ❗ Help & Support
-- Not understand How To Use | Join Discord For Helps: [Discord Servers](https://discord.gg/2euDQqzD8Y)
+- Not understand How To Use | Join Telegram For Helps: [Telegram](https://t.me/Serups)
 
 ---
 
@@ -54,10 +54,11 @@
 - Register Account Valorant + Download
 - Enjoy ! 
 
-### <a id="setup2"></a> 🗒 〢 Undetected
+## <a id="setup2"></a> 🗒 〢 Undetected
 - Free version is used by many Users, Detected are quite High | Our recommended alternative is Private Cheat.
 - **Legit Playing & Waranty & Lifetime | Up To You.**
-- [Discord Server](https://discord.gg/2euDQqzD8Y) 
+- [Telegram](https://t.me/Serups)
+
 
 
 ---
@@ -69,16 +70,19 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
 --- 
 
   <p align="center">
-    <a href="https://discord.gg/2euDQqzD8Y">
-        <img title="Serups server discord" alt="Serups discord" src="https://discordapp.com/api/guilds/923947526552432731/widget.png?style=banner2"/>
+    <a href="https://discord.com/users/1031783571905581137">
+        <img title="Serups" alt="Serups's discord" src="https://discord.c99.nl/widget/theme-4/1031783571905581137.png"/>
     </a>
-</p> 
+</p>
  
-## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y)
+## 💬 ・[Telegram](https://t.me/Serups)
 
-`BLUE BUTTON FOR JOIN SERVER`
+`BLUE BOTTON FOR BUY PRODUCT`
 
- ### 🛒〢 `SHOP`
+- Buy in Telegram for Privacy | Discord Private for Customer ONLY ! 
+- About Product [Private Cheat information](https://github.com/API-Connects/Detail)
+
+ ### 🛒〢 `PRODUCT`
  
 <table>
 <tr>
@@ -90,16 +94,17 @@ https://user-images.githubusercontent.com/94861415/177957302-45c6d2e9-6b7c-4102-
   
 ### 🎈 〢 Private Cheat
 
-- Lifetime & Free updated
+- Lifetime 
 - Undetected / Legit
 - **Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`**
+- Private Discord Customer
 
 ### 🩹 〢 Warranty
 
 - **Support 24/7 & Free updated** 
 - **Banned = `FULL REFUND`**
 
-#### Website | Resume [Serups.me](http://Serups.me/)
+#### Website | Portfolio [Serups.me](http://Serups.me/)
 
 ---
 
