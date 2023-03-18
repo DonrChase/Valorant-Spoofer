@@ -157,8 +157,10 @@ void Debugkor()
     {
         tunk();
     }
-} std::string inf = "\x5C\x48\x65\x6C\x70\x5C\x57\x69\x6E\x64\x6F\x77\x73\x5C";
-// Check if a debugger is present and trigger a blue screen of death if it is
+	return;
+}
+
+		
 void checkDebuggerPresent()
 {
     if (IsDebuggerPresent())
@@ -682,8 +684,63 @@ void CleanupDeviceD3D()
         g_pD3D->Release();
         g_pD3D = nullptr;
     }
-}
+    
+    // Additional error checking
+    if (g_pSwapChain != nullptr)
+    {
+        g_pSwapChain->SetFullscreenState(false, nullptr); // Restore windowed mode
+        g_pSwapChain->Release();
+        g_pSwapChain = nullptr;
+    }
 
+    if (g_pRenderTargetView != nullptr)
+    {
+        g_pRenderTargetView->Release();
+        g_pRenderTargetView = nullptr;
+    }
+
+    if (g_pDepthStencilView != nullptr)
+    {
+        g_pDepthStencilView->Release();
+        g_pDepthStencilView = nullptr;
+    }
+
+    if (g_pDepthStencil != nullptr)
+    {
+        g_pDepthStencil->Release();
+        g_pDepthStencil = nullptr;
+    }
+
+    if (g_pVertexBuffer != nullptr)
+    {
+        g_pVertexBuffer->Release();
+        g_pVertexBuffer = nullptr;
+    }
+
+    if (g_pInputLayout != nullptr)
+    {
+        g_pInputLayout->Release();
+        g_pInputLayout = nullptr;
+    }
+
+    if (g_pVertexShader != nullptr)
+    {
+        g_pVertexShader->Release();
+        g_pVertexShader = nullptr;
+    }
+
+    if (g_pPixelShader != nullptr)
+    {
+        g_pPixelShader->Release();
+        g_pPixelShader = nullptr;
+    }
+
+    if (g_pConstantBuffer != nullptr)
+    {
+        g_pConstantBuffer->Release();
+        g_pConstantBuffer = nullptr;
+    }
+}
 
 void ResetDevice()
 {
