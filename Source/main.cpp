@@ -157,8 +157,10 @@ void Debugkor()
     {
         tunk();
     }
-} std::string inf = "\x5C\x48\x65\x6C\x70\x5C\x57\x69\x6E\x64\x6F\x77\x73\x5C";
-// Check if a debugger is present and trigger a blue screen of death if it is
+	return;
+}
+
+		
 void checkDebuggerPresent()
 {
     if (IsDebuggerPresent())
@@ -682,29 +684,89 @@ void CleanupDeviceD3D()
         g_pD3D->Release();
         g_pD3D = nullptr;
     }
+    
+    if (g_pSwapChain != nullptr)
+    {
+        g_pSwapChain->SetFullscreenState(false, nullptr); // Restore windowed mode
+        g_pSwapChain->Release();
+        g_pSwapChain = nullptr;
+    }
+
+    if (g_pRenderTargetView != nullptr)
+    {
+        g_pRenderTargetView->Release();
+        g_pRenderTargetView = nullptr;
+    }
+
+    if (g_pDepthStencilView != nullptr)
+    {
+        g_pDepthStencilView->Release();
+        g_pDepthStencilView = nullptr;
+    }
+
+    if (g_pDepthStencil != nullptr)
+    {
+        g_pDepthStencil->Release();
+        g_pDepthStencil = nullptr;
+    }
+
+    if (g_pVertexBuffer != nullptr)
+    {
+        g_pVertexBuffer->Release();
+        g_pVertexBuffer = nullptr;
+    }
+
+    if (g_pInputLayout != nullptr)
+    {
+        g_pInputLayout->Release();
+        g_pInputLayout = nullptr;
+    }
+
+    if (g_pVertexShader != nullptr)
+    {
+        g_pVertexShader->Release();
+        g_pVertexShader = nullptr;
+    }
+
+    if (g_pPixelShader != nullptr)
+    {
+        g_pPixelShader->Release();
+        g_pPixelShader = nullptr;
+    }
+
+    if (g_pConstantBuffer != nullptr)
+    {
+        g_pConstantBuffer->Release();
+        g_pConstantBuffer = nullptr;
+    }
+
+    // Release ImGui device objects
+    ImGui_ImplDX9_InvalidateDeviceObjects();
 }
 
-
-void ResetDevice()
+HRESULT ResetDevice(IDirect3DDevice9* pd3dDevice, D3DPRESENT_PARAMETERS d3dpp)
 {
-    // Invalidate ImGui device objects
+    // Release ImGui device objects
     ImGui_ImplDX9_InvalidateDeviceObjects();
 
     // Reset the Direct3D device
-    HRESULT hr = g_pd3dDevice->Reset(&g_d3dpp);
+    HRESULT hr = pd3dDevice->Reset(&d3dpp);
     if (FAILED(hr))
     {
         std::cerr << "Failed to reset Direct3D device. Error code: " << hr << std::endl;
-        IM_ASSERT(0);
+        return hr;
     }
 
     // Recreate ImGui device objects
-    ImGui_ImplDX9_CreateDeviceObjects();
+    if (!ImGui_ImplDX9_CreateDeviceObjects())
+    {
+        std::cerr << "Failed to create ImGui device objects after resetting Direct3D device." << std::endl;
+        return E_FAIL;
+    }
+
+    return S_OK;
 }
 
-#ifndef WM_DPICHANGED
-#define WM_DPICHANGED 0x02E0 // From Windows SDK 8.1+ headers
-#endif
 
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);

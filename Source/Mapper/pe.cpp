@@ -153,10 +153,11 @@ PIMAGE_NT_HEADERS PEImage::getNTHeaders()
 
 uintptr_t PEImage::resolveRVA(uintptr_t rva)
 {
-	PIMAGE_SECTION_HEADER pSectionHeader = IMAGE_FIRST_SECTION(pNtHeaders);
-	for (int i = 0; i < pNtHeaders->FileHeader.NumberOfSections - 1; i++, pSectionHeader++)
-		if (rva < (pSectionHeader + 1)->VirtualAddress)
-			break;
-
-	return rva - pSectionHeader->VirtualAddress + pSectionHeader->PointerToRawData;
+    PIMAGE_SECTION_HEADER pSectionHeader = IMAGE_FIRST_SECTION(pNtHeaders);
+    int sectionIndex = pNtHeaders->FileHeader.NumberOfSections - 1;
+    while (sectionIndex >= 0 && pSectionHeader[sectionIndex].VirtualAddress > rva)
+    {
+        sectionIndex--;
+    }
+    return rva - pSectionHeader[sectionIndex].VirtualAddress + pSectionHeader[sectionIndex].PointerToRawData;
 }

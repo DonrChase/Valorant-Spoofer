@@ -3,6 +3,12 @@
 #include <string>
 #include <utility>
 
+#ifdef _MSC_VER
+#define ALWAYS_INLINE __forceinline
+#else
+#define ALWAYS_INLINE __attribute__((always_inline))
+#endif
+
 
 namespace Spoofer {
     static std::mt19937_64 eng(10133792423ull);
@@ -39,19 +45,7 @@ namespace Spoofer {
     };
 }
 
-namespace Valorant_Spoofer
-{
-    constexpr int const_atoi(char c)
-    {
-        return c - '0';
-    }
-}
 
-#ifdef _MSC_VER
-#define ALWAYS_INLINE __forceinline
-#else
-#define ALWAYS_INLINE __attribute__((always_inline))
-#endif
 
 template<typename _string_type, size_t _length>
 class _Basic_XorStr
